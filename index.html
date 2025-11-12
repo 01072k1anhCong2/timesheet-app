@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản lý công & lương</title>
+
+<!-- CSS -->
+<link rel="stylesheet" href="./css/common.css">
+<link rel="stylesheet" href="./css/index.css">
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<!-- Firebase config -->
+<script src="./js/firebase-config.js"></script>
+
+</head>
+<body>
+
+<div id="floatingTotal">
+  Tổng: <span id="floatingTotalValue">0</span> ¥
+</div>
+
+<div class="container">
+  <div class="welcome-banner">
+    Chào mừng đến với Lương tay không báo thuế 💰
+  </div>
+
+  <h2>📋 Quản lý công & lương</h2>
+
+  <!-- Profile -->
+  <div class="profile-card">
+  <img src="./images/avt.png" alt="Avatar" class="avatar">
+  <div class="profile-info">
+    <span class="name">Người dùng</span>
+    <!-- Input đổi tên -->
+    <input type="text" id="nameInput" placeholder="Nhập tên mới" style="display:none;">
+    <button id="editNameBtn">Đổi tên</button>
+    <button id="saveNameBtn" style="display:none;">Lưu tên</button>
+  </div>
+ </div>
+
+
+  <!-- Controls -->
+  <div class="controls">
+    <label>📅 Chọn tháng:
+      <select id="monthSelect"></select>
+    </label>
+    <label>💴 Tiền lương/giờ:
+      <input type="number" id="rate" value="1100">
+    </label>
+    <button onclick="calculate()">💰 Tính lương</button>
+  </div>
+
+  <!-- Table -->
+  <div class="table-wrapper">
+    <table id="timesheet">
+      <thead>
+        <tr>
+          <th>Ngày</th>
+          <th>Giờ vào</th>
+          <th>Giờ ra</th>
+          <th>Số giờ</th>
+          <th>Lương</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody id="timesheetBody"></tbody>
+    </table>
+  </div>
+
+  <!-- Total box -->
+  <div class="total-box">
+    <h3>TỔNG LƯƠNG THÁNG <span id="currentMonth"></span></h3>
+    <div class="total-amount"><span id="total">0</span> 円</div>
+  </div>
+</div>
+
+<button id="logoutBtn">🚪 Đăng xuất</button>
+
+<!-- JS -->
+<script src="./js/index.js"></script>
+</body>
+</html>

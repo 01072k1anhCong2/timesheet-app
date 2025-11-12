@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Đăng ký</title>
+
+<!-- CSS riêng -->
+<link rel="stylesheet" href="css/register.css">
+
+<!-- Firebase SDK -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+<!-- JS đăng ký -->
+<script src="js/register.js"></script>
+<script>
+  // Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyByHAvr1g1pzuE5E2LjYkJBj3G3CrSRr5g",
+  authDomain: "timesheet-app-d0744.firebaseapp.com",
+  databaseURL: "https://timesheet-app-d0744-default-rtdb.firebaseio.com",
+  projectId: "timesheet-app-d0744",
+  storageBucket: "timesheet-app-d0744.firebasestorage.app",
+  messagingSenderId: "407336345449",
+  appId: "1:407336345449:web:ba0f8975ea750cb257e7f8"
+};
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+
+</script>
+</head>
+
+<body>
+<div class="box">
+  <div class="register-banner">
+    Ông muốn tính lương tay không báo thuế? Hãy đăng ký! 💰
+  </div>
+  <div class="tick">✔</div>
+  <h3>Tạo tài khoản</h3>
+  <input type="text" id="name" placeholder="Nhập họ tên">
+  <input type="email" id="email" placeholder="Nhập email">
+  <input type="password" id="pass" placeholder="Nhập mật khẩu">
+  <button onclick="register()">Đăng ký</button>
+  <p id="msg"></p>
+  <a href="login.html">← Quay lại đăng nhập</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,247 @@
+/* =========================================
+   INDEX.CSS - STYLE CHO TRANG QUẢN LÝ LƯƠNG
+   ========================================= */
+
+/* === Container chính === */
+.container {
+  max-width: 1400px;               /* Giới hạn chiều rộng tối đa */
+  margin: 0 auto;                  /* Canh giữa trang */
+  background: white;               /* Nền trắng */
+  padding: 20px;                   /* Khoảng cách bên trong */
+  border-radius: 10px;             /* Bo góc */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Bóng mờ */
+}
+
+/* === Tiêu đề trang === */
+h2 {
+  color: #1a73e8;                  /* Màu xanh nổi bật */
+  margin-top: 0;                   /* Loại bỏ khoảng cách trên */
+  text-align: center;              /* Canh giữa chữ */
+}
+
+/* === Banner chào mừng === */
+.welcome-banner {
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+  padding: 15px 10px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  background: linear-gradient(270deg, #746869, #2c2b2a, #585461, #cab7c5); /* Gradient động */
+  background-size: 800% 800%;
+  color: white;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+  animation: gradientBG 10s ease infinite, swing 3s ease-in-out infinite; /* Hiệu ứng gradient + swing */
+}
+
+/* Animation gradient */
+@keyframes gradientBG {
+  0% { background-position:0% 50%; }
+  50% { background-position:100% 50%; }
+  100% { background-position:0% 50%; }
+}
+
+/* Animation swing nhẹ */
+@keyframes swing {
+  0% { transform: rotate(-1deg); }
+  50% { transform: rotate(1deg); }
+  100% { transform: rotate(-1deg); }
+}
+
+/* === Profile Card === */
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;                        /* Khoảng cách giữa avatar và info */
+  background: #f9f9f9;              /* Nền sáng */
+  padding: 15px 20px;                /* Khoảng cách trong */
+  border-radius: 12px;               /* Bo góc */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05); /* Bóng nhẹ */
+  margin-bottom: 20px;
+  flex-wrap: wrap;                   /* Cho phép xuống dòng */
+}
+
+/* Avatar người dùng */
+.profile-card .avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;                /* Tròn */
+  object-fit: cover;                 /* Cắt vừa khung */
+  border: 2px solid #4caf50;         /* Viền xanh */
+}
+
+/* Thông tin profile */
+.profile-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* Tên hiển thị */
+.profile-info .name {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+/* === Input đổi tên === */
+#nameInput {
+  padding: 5px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  width: 180px;
+  transition: 0.2s;
+}
+
+#nameInput:focus {
+  border-color: #4caf50;                 /* Viền xanh khi focus */
+  box-shadow: 0 0 5px rgba(76,175,80,0.3); /* Bóng xanh nhẹ */
+}
+
+/* === Nút đổi tên / lưu tên === */
+#editNameBtn, #saveNameBtn {
+  padding: 5px 10px;
+  font-size: 13px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#editNameBtn { background-color: #4caf50; color: white; }
+#editNameBtn:hover { background-color: #45a049; }
+
+#saveNameBtn { background-color: #2196f3; color: white; }
+#saveNameBtn:hover { background-color: #1976d2; }
+
+/* Input & nút hiển thị inline, không lệch dòng */
+.profile-info input,
+.profile-info button {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* === Controls === */
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.controls label {
+  font-weight: 600;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.controls select,
+.controls input {
+  padding: 6px 8px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  min-width: 100px;
+}
+
+/* === Table === */
+.table-wrapper { overflow-x: auto; margin-bottom: 20px; }
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  min-width: 600px;
+}
+
+th {
+  background: #1a73e8;
+  color: white;
+  padding: 8px;
+  font-size: 14px;
+}
+
+td {
+  border: 1px solid #ddd;
+  padding: 6px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.period {
+  display: block;
+  font-size: 11px;
+  color: #666;
+}
+
+/* === Tổng lương === */
+.total-box {
+  padding: 15px;
+  background: #1a73e8;
+  color: white;
+  text-align: center;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.total-amount {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+/* Tổng lương nổi */
+#floatingTotal {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  background: #ffd862;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0,0,0,0.35);
+  z-index: 9999;
+  font-size: 14px;
+}
+
+/* === Logout button === */
+#logoutBtn {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background-color: #3f3736;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  cursor: pointer;
+  z-index: 9999;
+  transition: 0.2s;
+}
+
+#logoutBtn:hover {
+  background-color: #7d7e78;
+  transform: scale(1.05);
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .controls { flex-direction: column; align-items: flex-start; padding: 10px; }
+  .controls label { width: 100%; }
+  table { min-width: 100%; font-size: 12px; }
+  th, td { padding: 6px; }
+  .profile-card { flex-direction: column; align-items: center; text-align: center; }
+  .profile-info .name { font-size: 14px; }
+  .total-box { font-size: 16px; padding: 10px; }
+  #floatingTotal { font-size: 12px; padding: 8px 10px; }
+}
