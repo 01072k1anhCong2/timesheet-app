@@ -1,0 +1,21 @@
+/* === common.css === */
+
+/* Box-sizing chung */
+* {
+  box-sizing: border-box;
+}
+
+/* Body chung cho tất cả các trang */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  background: #f0f2f5;
+}
+
+/* Media query cơ bản dùng chung cho điện thoại */
+@media (max-width: 768px) {
+  body {
+    padding: 10px;
+  }
+}

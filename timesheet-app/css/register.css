@@ -1,0 +1,128 @@
+  /* Body chung */
+  body { 
+    font-family: Arial; 
+    background:#f0f2f5; 
+    display:flex; justify-content:center; align-items:center; 
+    min-height:100vh; margin:0; padding:10px;
+  }
+
+  /* Box đăng ký */
+  .box { 
+    background:white; 
+    padding:25px; 
+    border-radius:10px; 
+    width:320px; 
+    max-width:100%; 
+    box-shadow:0 0 10px rgba(0,0,0,0.2); 
+    text-align:center;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  input { 
+    width:100%; 
+    margin-top:10px; 
+    padding:10px; 
+    border-radius:5px; 
+    border:1px solid #ccc; 
+    font-size:14px;
+    box-sizing: border-box;
+  }
+
+  button { 
+    width:100%; 
+    margin-top:15px; 
+    padding:10px; 
+    background:#28a745; 
+    border:none; 
+    border-radius:5px; 
+    color:white; 
+    cursor:pointer; 
+    font-size:15px;
+    transition: 0.2s;
+  }
+
+  button:hover {
+    background:#218838;
+  }
+
+  a {
+    display:block;
+    margin-top:12px; 
+    text-align:center; 
+    color:#1a73e8; 
+    text-decoration:none; 
+    font-size:13px;
+  }
+
+  a:hover { text-decoration: underline; }
+
+  p#msg {
+    min-height:20px; 
+    margin-top:10px; 
+    font-weight:600; 
+    font-size:14px;
+  }
+
+  /* Tick icon */
+  .tick {
+    display: none;
+    font-size: 30px;
+    color: #4caf50;
+    margin-bottom: 10px;
+  }
+  .box.success .tick { display: block; }
+
+  /* Box trạng thái */
+  .box.success { 
+    border: 2px solid #4caf50;
+    animation: pop 0.5s;
+  }
+  .box.error { 
+    border: 2px solid #f44336;
+    animation: shake 0.5s;
+  }
+
+  /* Animation */
+  @keyframes pop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+  }
+
+  /* Banner đăng ký */
+  .register-banner {
+    background: linear-gradient(90deg, #2bb837, #6c8ca5);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    animation: bounce 1.5s infinite alternate;
+    font-size:14px;
+  }
+
+  @keyframes bounce {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-5px); }
+  }
+
+  /* === Responsive cho điện thoại === */
+  @media (max-width:480px){
+    .box {
+      width: 100%;
+      padding: 20px;
+    }
+    .register-banner { font-size:13px; padding:8px; }
+    input, button { font-size:14px; padding:8px; }
+    p#msg { font-size:13px; }
+    a { font-size:12px; }
+  }
