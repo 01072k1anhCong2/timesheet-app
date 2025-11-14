@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -13,7 +14,6 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <!-- JS riêng cho login -->
-<script src="./js/login.js"></script>
 <script>
   const firebaseConfig = {
   apiKey: "AIzaSyByHAvr1g1pzuE5E2LjYkJBj3G3CrSRr5g",
@@ -43,18 +43,31 @@ const auth = firebase.auth();
   <h3>Đăng nhập</h3>
   
   <!-- Input email & password -->
+<div class="login-form">
   <input type="email" id="email" placeholder="Email">
   <input type="password" id="pass" placeholder="Mật khẩu">
   
   <!-- Nút đăng nhập -->
   <button onclick="login()">Đăng nhập</button>
+</div>
   
   <!-- Thông báo lỗi / thành công -->
   <p id="msg"></p>
+  <!-- lấy lại mật khẩu -->
+  <div id="resetForm" style="display:none;">
+    <input type="email" id="resetEmail" placeholder="Nhập email của bạn">
+    <button id="sendResetBtn">Gửi</button>
+  </div>
+  
+  <div class="forgot">
+  <a href="#" id="forgotBtn">click để lấy lại mật khẩu</a>
+  </div>
+
   
   <!-- Link sang register -->
   <a href="register.html">Chưa có tài khoản? Bấm vào đây</a>
 </div>
+<script src="./js/login.js"></script>
 
 </body>
 </html>

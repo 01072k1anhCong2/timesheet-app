@@ -13,6 +13,8 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
 
 <!-- Firebase config -->
 <script src="./js/firebase-config.js"></script>
@@ -33,13 +35,16 @@
 
   <!-- Profile -->
   <div class="profile-card">
-  <img src="./images/avt.png" alt="Avatar" class="avatar">
+  <img src="./images/avt.png" alt="Avatar" class="avatar" id="avatarImg">
   <div class="profile-info">
     <span class="name">Người dùng</span>
     <!-- Input đổi tên -->
     <input type="text" id="nameInput" placeholder="Nhập tên mới" style="display:none;">
     <button id="editNameBtn">Đổi tên</button>
     <button id="saveNameBtn" style="display:none;">Lưu tên</button>
+        <!-- Đổi avatar -->
+    <input type="file" id="avatarInput" accept="image/*" style="display:none;">
+    <button id="changeAvatarBtn">Đổi avatar</button>
   </div>
  </div>
 
@@ -52,6 +57,21 @@
     <label>💴 Tiền lương/giờ:
       <input type="number" id="rate" value="1100">
     </label>
+      <!-- Mục nhập giá trị cố định cho sub-row -->
+<div class="fixed-inputs">
+    <label>Giờ giải lao:
+      <input type="number" id="fixedBreak" placeholder="Phút">
+      <button id="applyBreakBtn">Cố Định</button>
+    </label>
+    <label>Tiền đi:
+      <input type="number" id="fixedGo" placeholder="¥">
+      <button id="applyGoBtn">Cố Định</button>
+    </label>
+    <label>Tiền về:
+      <input type="number" id="fixedBack" placeholder="¥">
+      <button id="applyBackBtn">Cố Định</button>
+    </label>
+  </div>
     <button onclick="calculate()">💰 Tính lương</button>
   </div>
 
@@ -80,6 +100,19 @@
 </div>
 
 <button id="logoutBtn">🚪 Đăng xuất</button>
+<!-- Custom confirm modal hỏi khi đăng xuất hay nút cập nhật gì đó -->
+<div id="customConfirm" class="modal">
+  <div class="modal-content">
+    <p id="confirmText">Bạn có chắc không?</p>
+    <div class="modal-buttons">
+      <button id="confirmOk">OK</button>
+      <button id="confirmCancel">Hủy</button>
+    </div>
+  </div>
+</div>
+<!-- Toast notification đổi thành công-->
+<div id="toast" class="toast"></div>
+
 
 <!-- JS -->
 <script src="./js/index.js"></script>

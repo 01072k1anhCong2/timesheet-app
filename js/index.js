@@ -1,4 +1,35 @@
 let currentUID = null;
+// Hàm hiển thị toast
+function showToast(message, duration = 3000) {
+  const toast = document.getElementById("toast");
+  toast.innerText = message;
+  toast.classList.add("show");
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+  }, duration);
+}
+
+// Hàm hiển thị custom confirm modal
+function showCustomConfirm(message, callback) {
+  const modal = document.getElementById("customConfirm"); // Lấy modal
+  const text = document.getElementById("confirmText");    // Lấy phần text
+  const okBtn = document.getElementById("confirmOk");    // Lấy nút OK
+  const cancelBtn = document.getElementById("confirmCancel"); // Lấy nút Hủy
+
+  text.innerText = message;   // Gán nội dung confirm
+  modal.style.display = "flex"; // Hiển thị modal
+
+  okBtn.onclick = () => {     // Khi nhấn OK
+    modal.style.display = "none"; // ẩn modal
+    callback(true);               // gọi callback với giá trị true
+  };
+
+  cancelBtn.onclick = () => { // Khi nhấn Hủy
+    modal.style.display = "none"; // ẩn modal
+    callback(false);              // gọi callback với giá trị false
+  };
+}
 
 // Chặn truy cập khi chưa login
 firebase.auth().onAuthStateChanged(user => {
@@ -11,13 +42,62 @@ firebase.auth().onAuthStateChanged(user => {
     const nameSpan = document.querySelector(".profile-info .name");
     // bắt đâu đỏi tên  
     if(nameSpan) nameSpan.innerText = user.displayName || "Người dùng";
+    
+
+// Đổi avatar
+// --------------------
+const avatarImg = document.getElementById("avatarImg");
+const avatarInput = document.getElementById("avatarInput");
+const changeAvatarBtn = document.getElementById("changeAvatarBtn");
+
+// Hiển thị avatar hiện tại nếu user có photoURL
+if(user.photoURL){
+  avatarImg.src = user.photoURL;
+}
+
+// Khi bấm nút "Đổi avatar"
+changeAvatarBtn.onclick = () => {
+  avatarInput.click();
+};
+
+// Khi chọn file
+avatarInput.onchange = async (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+
+  const reader = new FileReader();
+  reader.onload = () => { avatarImg.src = reader.result; } // hiển thị ngay
+  reader.readAsDataURL(file);
+
+  try {
+    const storageRef = firebase.storage().ref();
+    const avatarRef = storageRef.child(`avatars/${currentUID}/${file.name}`);
+    await avatarRef.put(file);
+    const photoURL = await avatarRef.getDownloadURL();
+
+    await firebase.auth().currentUser.updateProfile({ photoURL });
+    showToast("Đổi avatar thành công!");
+  } catch(err) {
+    console.error(err);
+    showToast("Lỗi khi đổi avatar: " + err.message, 5000);
+  }
+};
+
+
+
     // Lấy các phần tử đổi tên
-const nameInput = document.getElementById("nameInput");
-const editBtn   = document.getElementById("editNameBtn");
-const saveBtn   = document.getElementById("saveNameBtn");
+    const nameInput = document.getElementById("nameInput");
+    const editBtn   = document.getElementById("editNameBtn");
+    const saveBtn   = document.getElementById("saveNameBtn");
+    // Gán class cho các nút cố định
+    saveBtn.className = "save-btn";
+    document.getElementById("applyBreakBtn").className = "apply-btn";
+    document.getElementById("applyGoBtn").className = "apply-btn";
+    document.getElementById("applyBackBtn").className = "apply-btn";
+    document.getElementById("logoutBtn").className = "logout-btn";
 
 // Nút “Đổi tên”
-editBtn.onclick = () => {
+  editBtn.onclick = () => {
   nameInput.style.display = "inline-block";
   saveBtn.style.display = "inline-block";
   nameInput.value = nameSpan.innerText; // hiện tên hiện tại
@@ -28,7 +108,7 @@ editBtn.onclick = () => {
 saveBtn.onclick = () => {
   const newName = nameInput.value.trim();
   if(!newName) {
-    alert("Tên không được để trống!");
+    showToast("Tên không được để trống!", 3000);
     return;
   }
 
@@ -39,13 +119,13 @@ saveBtn.onclick = () => {
     nameSpan.style.display = "inline-block";
     nameInput.style.display = "none";
     saveBtn.style.display = "none";
-    alert("Đổi tên thành công!");
+    showToast("Đổi tên thành công!"); // toast hiển thị giữa màn hình từ trên xuống
   }).catch(err => {
     console.error(err);
-    alert("Lỗi khi đổi tên: " + err.message);
+    showToast("Lỗi khi đổi tên: " + err.message, 5000);
   });
 };
-
+    
 
     generateTable();
   }
@@ -124,6 +204,7 @@ function generateTable() {
       // Nút reset giờ
       const btnReset = document.createElement("button");
       btnReset.innerText = "Xóa";
+      btnReset.className = "reset-btn";
       btnReset.style.padding = "2px 6px";
       btnReset.style.fontSize = "12px";
       btnReset.style.cursor = "pointer";
@@ -135,10 +216,23 @@ function generateTable() {
         saveRow();
       };
       cActions.appendChild(btnReset);
+// hỏi trc khi xóa giờ
+            btnReset.onclick = () => {
+  showCustomConfirm("Bạn có chắc chắn muốn xóa giờ này không?", confirmed => {
+    if(!confirmed) return; // Hủy → dừng
+    inputIn.value = "";
+    inputOut.value = "";
+    spIn.innerText = "";
+    spOut.innerText = "";
+    saveRow();
+    showToast("Đã xóa giờ!");
+  });
+};
 
       // Nút thêm sub-row
       const btnAdd = document.createElement("button");
       btnAdd.innerText = "Thêm";
+      btnAdd.className = "add-btn";
       btnAdd.style.padding = "2px 6px";
       btnAdd.style.fontSize = "12px";
       btnAdd.style.cursor = "pointer";
@@ -225,6 +319,44 @@ if (saved[day]?.subRows && Array.isArray(saved[day].subRows)) {
     calc();
   });
 }
+// hàm nhập giá trí cố định
+function applyFixed(type) {
+  let typeName = type === "break" ? "Giờ giải lao" : type === "go" ? "Tiền đi" : "Tiền về";
+
+  showCustomConfirm(`Có chắc muốn áp dụng tất cả ${typeName}?`, confirmed => {
+    if(!confirmed) return;
+
+    const month = monthSelect.value;
+    if (!currentUID) return showToast("Chưa login!", 3000);
+
+    let value = 0;
+    if (type === "break") value = parseInt(document.getElementById("fixedBreak").value) || 0;
+    if (type === "go")    value = parseFloat(document.getElementById("fixedGo").value) || 0;
+    if (type === "back")  value = parseFloat(document.getElementById("fixedBack").value) || 0;
+
+    for (let day = 1; day <= 31; day++) {
+      db.ref(`timesheet/${currentUID}/${month}/${day}/subRows`).once("value").then(snap => {
+        const subRows = snap.val() || [];
+        if (subRows.length === 0) subRows.push({ break: "", go: "", back: "" });
+        subRows.forEach(sr => { sr[type] = value; });
+        db.ref(`timesheet/${currentUID}/${month}/${day}/subRows`).set(subRows);
+      });
+    }
+
+    setTimeout(() => {
+      generateTable();
+      showToast(`${typeName} đã áp dụng cho toàn bộ tháng!`);
+    }, 500); 
+  });
+}
+
+
+
+// Gắn sự kiện cho từng nút riêng
+document.getElementById("applyBreakBtn").onclick = () => applyFixed("break");
+document.getElementById("applyGoBtn").onclick    = () => applyFixed("go");
+document.getElementById("applyBackBtn").onclick  = () => applyFixed("back");
+
 
 // --------------------------
 // Hàm thêm sub-row
@@ -288,6 +420,7 @@ function addSubRow(mainTr, existingData = null) {
   // Nút Xóa luôn hiện
   const btnDel = document.createElement("button");
   btnDel.innerText = "Xóa";
+  btnDel.className = "delete-btn";
   btnDel.style.padding = "2px 6px";
   btnDel.style.fontSize = "12px";
   btnDel.style.cursor = "pointer";
@@ -298,10 +431,23 @@ function addSubRow(mainTr, existingData = null) {
     calc(); // <--  cập nhật lương ngay
   };
   tdAction.appendChild(btnDel);
+  // hỏi trc khi xóa hàng phụ
+  btnDel.onclick = () => {
+  showCustomConfirm("Bạn có chắc chắn muốn xóa hàng này không?", confirmed => {
+    if(!confirmed) return; // Hủy → dừng
+    headerTr.remove();
+    inputTr.remove();
+    saveSubRow(mainTr);
+    calc();
+    showToast("Đã xóa hàng!");
+  });
+};
+
 
   // Nút Ẩn, hiển thị chỉ khi có dữ liệu
   const btnHide = document.createElement("button");
   btnHide.innerText = "Ẩn";
+  btnHide.className = "hide-btn";
   btnHide.style.padding = "2px 6px";
   btnHide.style.fontSize = "12px";
   btnHide.style.cursor = "pointer";
@@ -453,6 +599,14 @@ monthSelect.onchange = generateTable;
 document.getElementById("rate").onchange = calc;
 
 document.getElementById("logoutBtn").addEventListener("click", () => {
-  firebase.auth().signOut().then(() => { window.location = "login.html"; })
-  .catch(err => alert("Lỗi khi đăng xuất: " + err.message));
+  // Gọi modal xác nhận
+  showCustomConfirm("Bạn có chắc muốn đăng xuất không?", confirmed => {
+    if(confirmed){ // Nếu nhấn OK
+      firebase.auth().signOut()
+        .then(() => window.location = "login.html") // Đăng xuất
+        .catch(err => alert("Lỗi khi đăng xuất: " + err.message));
+    }
+    // Nếu nhấn Hủy → không làm gì
+  });
 });
+
