@@ -238,6 +238,12 @@ td {
   background-color: #a19f9f;
 }
 
+/* --- Sub-row và sub-row-header giữ nguyên màu --- */
+#timesheetBody > tr.sub-row,
+#timesheetBody > tr.sub-row-header {
+  background-color: inherit !important;
+}
+
 
 /* === Responsive === */
 @media (max-width: 768px) {
