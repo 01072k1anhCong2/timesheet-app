@@ -233,6 +233,11 @@ td {
   background-color: #7d7e78;
   transform: scale(1.05);
 }
+/* --- Tô màu các dòng chính (ngày 1 → 31) --- */
+#timesheetBody > tr {
+  background-color: #fafafa;
+}
+
 
 /* === Responsive === */
 @media (max-width: 768px) {
