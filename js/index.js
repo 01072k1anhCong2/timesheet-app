@@ -1,4 +1,4 @@
-let currentUID = null;
+var currentUID = null;
 // Hàm hiển thị toast
 function showToast(message, duration = 3000) {
   const toast = document.getElementById("toast");
