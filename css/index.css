@@ -235,7 +235,7 @@ td {
 }
 /* --- Tô màu các dòng chính (ngày 1 → 31) --- */
 #timesheetBody > tr {
-  background-color: #a19f9f;
+  background-color: #c4bebe;
 }
 
 /* --- Sub-row và sub-row-header giữ nguyên màu --- */
