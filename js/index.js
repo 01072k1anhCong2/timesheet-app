@@ -236,7 +236,7 @@ function generateTable() {
       btnAdd.style.padding = "2px 6px";
       btnAdd.style.fontSize = "12px";
       btnAdd.style.cursor = "pointer";
-btnAdd.onclick = async () => {
+      btnAdd.onclick = async () => {
   const day = row.cells[0].innerText;
   const month = monthSelect.value;
 

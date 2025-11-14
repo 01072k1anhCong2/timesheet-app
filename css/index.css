@@ -393,5 +393,24 @@ button.logout-btn:hover {
   padding: 2px 6px;
   border-radius: 5px;
 }
+button#changeAvatarBtn {
+  background-color: #8e44ad; /* tím */
+  color: #fff;
+}
+button#changeAvatarBtn:hover {
+  background-color: #6c3483;
+}
 
+.reset-buttons {
+  display: flex;
+  gap: 10px; /* khoảng cách giữa 2 nút */
+}
+
+#backToLoginBtn {
+  flex: 3;        /* chiếm 3 phần */
+}
+
+#sendResetBtn {
+  flex: 4;        /* chiếm 4 phần */
+}
 

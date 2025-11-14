@@ -66,49 +66,9 @@ document.getElementById("sendResetBtn").onclick = () => {
       document.getElementById("resetEmail").value = "";
     });
 };
-
-// Lấy các phần tử
-const avatarImg = document.getElementById("avatarImg");
-const avatarInput = document.getElementById("avatarInput");
-const changeAvatarBtn = document.getElementById("changeAvatarBtn");
-
-// Khi bấm "Đổi avatar" → mở file picker
-changeAvatarBtn.onclick = () => {
-  avatarInput.click();
-};
-
-// Khi chọn file
-avatarInput.onchange = async (e) => {
-  const file = e.target.files[0];
-  if(!file) return;
-
-  // Hiển thị tạm ảnh đã chọn
-  const reader = new FileReader();
-  reader.onload = () => {
-    avatarImg.src = reader.result;
-  }
-  reader.readAsDataURL(file);
-
-  try {
-    // Upload lên Firebase Storage
-    const storageRef = firebase.storage().ref();
-    const avatarRef = storageRef.child(`avatars/${currentUID}/${file.name}`);
-    await avatarRef.put(file);
-
-    // Lấy URL và cập nhật user
-    const photoURL = await avatarRef.getDownloadURL();
-    await firebase.auth().currentUser.updateProfile({ photoURL });
-
-    showToast("Đổi avatar thành công!");
-  } catch(err) {
-    console.error(err);
-    showToast("Lỗi khi đổi avatar: " + err.message, 5000);
-  }
-};
-
-// Khi load trang → hiển thị avatar hiện tại
-firebase.auth().onAuthStateChanged(user => {
-  if(user && user.photoURL){
-    avatarImg.src = user.photoURL;
-  }
+const backToLoginBtn = document.getElementById("backToLoginBtn");
+// trở lại đăng nhập
+backToLoginBtn.addEventListener("click", () => {
+  resetForm.style.display = "none";   // ẩn form reset
+  loginForm.style.display = "block";  // hiện form login
 });

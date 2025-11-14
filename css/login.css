@@ -156,3 +156,22 @@
   opacity: 1;
   top: 50px;
 }
+.reset-buttons {
+  display: flex;
+  gap: 10px; /* khoảng cách giữa 2 nút */
+}
+
+#backToLoginBtn {
+  flex: 7;        /* chiếm 1 phần */
+}
+
+#sendResetBtn {
+  flex: 3;        /* chiếm 2 phần */
+}
+
+/* Nếu muốn, có thể thêm padding để 2 nút có chiều cao/width hợp lý */
+#backToLoginBtn, #sendResetBtn {
+  padding: 8px 12px;
+  font-size: 14px;
+  cursor: pointer;
+}
