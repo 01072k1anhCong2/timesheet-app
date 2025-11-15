@@ -167,6 +167,8 @@ th {
   color: white;
   padding: 8px;
   font-size: 14px;
+  white-space: nowrap;   /* Không xuống dòng */
+  text-align: center; 
 }
 
 td {
@@ -321,6 +323,8 @@ td {
 /* Style chung cho tất cả nút */
 /* ======================= */
 button {
+  background-color: #27ae60;
+  color: #fff;
   padding: 4px 10px;           /* Khoảng cách bên trong */
   font-size: 13px;             /* Cỡ chữ vừa */
   font-weight: 500;            /* Chữ hơi đậm */
@@ -400,5 +404,99 @@ button#changeAvatarBtn {
 button#changeAvatarBtn:hover {
   background-color: #6c3483;
 }
+
+/* ---------- Các input cố định trên đầu ---------- */
+.fixed-inputs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.fixed-inputs label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+}
+
+.fixed-inputs input[type="number"],
+.fixed-inputs input[type="time"] {
+  width: 70px;
+  padding: 4px 6px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+.fixed-inputs button {
+  padding: 4px 6px;
+  font-size: 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.reset-btn {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.apply-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.fixed-inputs button:hover {
+  opacity: 0.85;
+}
+
+/* ---------- Bảng timesheet ---------- */
+#timesheet input[type="time"],
+#timesheet input[type="number"] {
+  width: 70px;
+  font-size: 13px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/* Sub-row gọn hơn */
+.sub-row input[type="number"] {
+  width: 45px;
+  font-size: 12px;
+  padding: 2px 3px;
+}
+
+/* Nút trong bảng */
+#timesheet button {
+  padding: 2px 5px;
+  font-size: 11px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.add-btn {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.delete-btn {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.hide-btn {
+  background-color: #ffc107;
+  color: #000;
+}
+
+#timesheet button:hover {
+  opacity: 0.85;
+}
+
 
 

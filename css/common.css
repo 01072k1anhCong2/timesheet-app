@@ -83,3 +83,40 @@ body {
     padding: 10px;
   }
 }
+/* Media query cho iPhone, màn hình <= 400px */
+@media (max-width: 400px) {
+  .fixed-inputs {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .fixed-inputs label {
+    justify-content: space-between;
+  }
+
+  .fixed-inputs input {
+    width: 50px;
+    font-size: 13px;
+  }
+
+  .fixed-inputs button {
+    width: 70px;
+    font-size: 12px;
+  }
+
+  #timesheet input[type="time"],
+  #timesheet input[type="number"] {
+    width: 40px;
+    font-size: 12px;
+  }
+
+  .sub-row input[type="number"] {
+    width: 35px;
+    font-size: 11px;
+  }
+
+  #timesheet button {
+    padding: 1px 3px;
+    font-size: 10px;
+  }
+}

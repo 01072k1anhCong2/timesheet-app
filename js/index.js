@@ -49,12 +49,17 @@ firebase.auth().onAuthStateChanged(user => {
 const avatarImg = document.getElementById("avatarImg");
 const avatarInput = document.getElementById("avatarInput");
 const changeAvatarBtn = document.getElementById("changeAvatarBtn");
-
+const defaultAvatar = "./images/avt.png";
 // Hiển thị avatar hiện tại nếu user có photoURL
 if(user.photoURL){
   avatarImg.src = user.photoURL;
+}else {
+  avatarImg.src = defaultAvatar;
 }
-
+// Nếu ảnh từ Firebase load lỗi → dùng ảnh mặc định
+avatarImg.onerror = () => {
+  avatarImg.src = defaultAvatar;
+};
 // Khi bấm nút "Đổi avatar"
 changeAvatarBtn.onclick = () => {
   avatarInput.click();
@@ -200,6 +205,8 @@ function generateTable() {
       const cActions = row.insertCell();
       cActions.style.display = "flex";
       cActions.style.gap = "5px";
+      cActions.style.justifyContent = "center";
+      cActions.style.alignItems = "center";
 
       // Nút reset giờ
       const btnReset = document.createElement("button");
@@ -349,14 +356,116 @@ function applyFixed(type) {
     }, 500); 
   });
 }
+// Hàm xóa giá trị cố định break/go/back
+function clearFixed(type) {
+  let typeName = type === "break" ? "Giờ giải lao" : type === "go" ? "Tiền đi" : "Tiền về";
+
+  showCustomConfirm(`Có chắc muốn xóa tất cả ${typeName} cho toàn bộ tháng?`, confirmed => {
+    if (!confirmed) return;
+
+    const month = monthSelect.value;
+    if (!currentUID) return showToast("Chưa login!", 3000);
+
+    for (let day = 1; day <= 31; day++) {
+      db.ref(`timesheet/${currentUID}/${month}/${day}/subRows`).once("value").then(snap => {
+        const subRows = snap.val() || [];
+        subRows.forEach(sr => sr[type] = ""); // xóa giá trị
+        db.ref(`timesheet/${currentUID}/${month}/${day}/subRows`).set(subRows);
+      });
+    }
+
+    setTimeout(() => {
+      generateTable();
+      showToast(`Đã xóa ${typeName} cho toàn bộ tháng!`);
+    }, 300);
+  });
+}
+
+// Gắn sự kiện cho các nút Xóa
+document.getElementById("clearBreakBtn").onclick = () => clearFixed("break");
+document.getElementById("clearGoBtn").onclick    = () => clearFixed("go");
+document.getElementById("clearBackBtn").onclick  = () => clearFixed("back");
+
+// hàm nhập giờ cố định giờ vào/ra
+function applyFixedInOut(type) {
+  let label = type === "in" ? "Giờ vào" : "Giờ ra";
+
+  showCustomConfirm(`Có chắc muốn áp dụng tất cả ${label} cho toàn bộ tháng?`, confirmed => {
+    if (!confirmed) return;
+
+    const month = monthSelect.value;
+    if (!currentUID) return showToast("Chưa login!", 3000);
+
+    const value = document.getElementById(type === "in" ? "fixedIn" : "fixedOut").value;
+
+    if (!value) {
+      return showToast(`Bạn chưa nhập ${label}!`);
+    }
+
+    // Áp dụng cho toàn bộ ngày trong tháng
+    for (let day = 1; day <= 31; day++) {
+      db.ref(`timesheet/${currentUID}/${month}/${day}`).once("value").then(snap => {
+        const old = snap.val() || { subRows: [] };
+
+        db.ref(`timesheet/${currentUID}/${month}/${day}`).set({
+          in:  type === "in" ? value : old.in || "",
+          out: type === "out" ? value : old.out || "",
+          subRows: old.subRows || []
+        });
+      });
+    }
+
+    setTimeout(() => {
+      generateTable();
+      showToast(`${label} đã áp dụng cho toàn bộ tháng!`);
+    }, 300);
+  });
+}
+
+// Hàm xóa giờ vào/ra cố định
+function clearFixedInOut(type) {
+  let label = type === "in" ? "Giờ vào" : "Giờ ra";
+
+  showCustomConfirm(`Có chắc muốn xóa tất cả ${label} cho toàn bộ tháng?`, confirmed => {
+    if (!confirmed) return;
+
+    const month = monthSelect.value;
+    if (!currentUID) return showToast("Chưa login!", 3000);
+
+    for (let day = 1; day <= 31; day++) {
+      db.ref(`timesheet/${currentUID}/${month}/${day}`).once("value").then(snap => {
+        const old = snap.val() || { subRows: [] };
+
+        db.ref(`timesheet/${currentUID}/${month}/${day}`).set({
+          in: type === "in" ? "" : old.in || "",
+          out: type === "out" ? "" : old.out || "",
+          subRows: old.subRows || []
+        });
+      });
+    }
+
+    setTimeout(() => {
+      generateTable();
+      showToast(`Đã xóa ${label} cho toàn bộ tháng!`);
+    }, 300);
+  });
+}
+
+// Gắn sự kiện cho nút xóa
+document.getElementById("clearInBtn").onclick = () => clearFixedInOut("in");
+document.getElementById("clearOutBtn").onclick = () => clearFixedInOut("out");
+
 
 
 
 // Gắn sự kiện cho từng nút riêng
-document.getElementById("applyBreakBtn").onclick = () => applyFixed("break");
-document.getElementById("applyGoBtn").onclick    = () => applyFixed("go");
-document.getElementById("applyBackBtn").onclick  = () => applyFixed("back");
-
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("applyInBtn").onclick = () => applyFixedInOut("in");
+  document.getElementById("applyOutBtn").onclick = () => applyFixedInOut("out");
+  document.getElementById("applyBreakBtn").onclick = () => applyFixed("break");
+  document.getElementById("applyGoBtn").onclick    = () => applyFixed("go");
+  document.getElementById("applyBackBtn").onclick  = () => applyFixed("back");
+});
 
 // --------------------------
 // Hàm thêm sub-row

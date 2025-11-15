@@ -62,20 +62,34 @@
     </label>
       <!-- Mục nhập giá trị cố định cho sub-row -->
 <div class="fixed-inputs">
+    <label>Giờ vào:
+      <input type="time" id="fixedIn">
+      <button id="applyInBtn">Cố Định</button>
+      <button id="clearInBtn" class="reset-btn">Xóa</button>
+
+    </label>
+
+    <label>Giờ ra:
+      <input type="time" id="fixedOut">
+      <button id="applyOutBtn">Cố Định</button>
+      <button id="clearOutBtn" class="reset-btn">Xóa</button>
+    </label>
     <label>Giờ giải lao:
       <input type="number" id="fixedBreak" placeholder="Phút">
       <button id="applyBreakBtn">Cố Định</button>
+      <button id="clearBreakBtn" class="reset-btn">Xóa</button>
     </label>
     <label>Tiền đi:
       <input type="number" id="fixedGo" placeholder="¥">
       <button id="applyGoBtn">Cố Định</button>
+      <button id="clearGoBtn" class="reset-btn">Xóa</button>
     </label>
     <label>Tiền về:
       <input type="number" id="fixedBack" placeholder="¥">
       <button id="applyBackBtn">Cố Định</button>
+      <button id="clearBackBtn" class="reset-btn">Xóa</button>
     </label>
   </div>
-    <button onclick="calculate()">💰 Tính lương</button>
   </div>
 
   <!-- Table -->
@@ -106,7 +120,7 @@
 <!-- Custom confirm modal hỏi khi đăng xuất hay nút cập nhật gì đó -->
 <div id="customConfirm" class="modal">
   <div class="modal-content">
-    <p id="confirmText">Bạn có chắc không?</p>
+    <p id="confirmText">Bạn có chắc không vậy?</p>
     <div class="modal-buttons">
       <button id="confirmOk">OK</button>
       <button id="confirmCancel">Hủy</button>
