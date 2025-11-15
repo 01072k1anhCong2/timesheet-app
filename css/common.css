@@ -120,3 +120,30 @@ body {
     font-size: 10px;
   }
 }
+/* an hien mat mat khau login va register */
+.password-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center; /* canh giữa theo chiều dọc */
+}
+
+.password-wrapper input {
+  width: 100%;
+  padding-right: 40px; /* chừa chỗ cho icon */
+  height: 40px; /* chiều cao input */
+  font-size: 16px;
+}
+
+.toggle-pass {
+  position: absolute;
+  right: 10px;  /* cách phải 10px */
+  cursor: pointer;
+  font-size: 18px;
+  color: #555;
+  display: flex;
+  align-items: center; /* canh giữa icon theo chiều dọc */
+  justify-content: center;
+  height: 100%;
+}
+
+

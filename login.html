@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Đăng nhập</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <!-- === CSS chung và riêng cho login === -->
 <link rel="stylesheet" href="./css/common.css"> <!-- body chung, box cơ bản, media query -->
@@ -15,8 +16,8 @@
 <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
 <!-- JS riêng cho login -->
 <script>
-const firebaseConfig = {
-  apiKey: "AIzaSyCi_64FqLHar_IBed4hSPpTJZpYvoE1NHo",
+  const firebaseConfig = {
+    apiKey: "AIzaSyCi_64FqLHar_IBed4hSPpTJZpYvoE1NHo",
   authDomain: "timesheet-a8dc2.firebaseapp.com",
   databaseURL: "https://timesheet-a8dc2-default-rtdb.firebaseio.com",
   projectId: "timesheet-a8dc2",
@@ -30,26 +31,32 @@ const auth = firebase.auth();
 </head>
 
 <body>
-
-<div class="box">
+  
+  <div class="box">
     <div class="card-ltc">
-Tính lương tay by dev <br> LÂM THÀNH CÔNG phát triển
-  </div>
-
-  <!-- Tick icon thành công -->
-  <div class="tick">✔</div>
-  
-  <h3>Đăng nhập</h3>
-  
+      Tính lương tay by dev <br> LÂM THÀNH CÔNG phát triển
+    </div>
+    
+    <!-- Tick icon thành công -->
+    <div class="tick">✔</div>
+    
+    <h3>Đăng nhập</h3>
+    
   <!-- Input email & password -->
 <div class="login-form">
   <input type="email" id="email" placeholder="Email">
+<div class="password-wrapper">
   <input type="password" id="pass" placeholder="Mật khẩu">
+  <span id="togglePass" class="toggle-pass">
+    <i class="fa-regular fa-eye"></i>
+  </span>
+</div>
+
   
   <!-- Nút đăng nhập -->
   <button onclick="login()">Đăng nhập</button>
 </div>
-  
+
   <!-- Thông báo lỗi / thành công -->
   <p id="msg"></p>
   <!-- lấy lại mật khẩu -->
@@ -59,19 +66,21 @@ Tính lương tay by dev <br> LÂM THÀNH CÔNG phát triển
       <button id="backToLoginBtn">trở lại đăng nhập</button>
       <button id="sendResetBtn" >Gửi</button>
     </div>
-    
-   
   </div>
-
+  
   <div class="forgot">
-  <a href="#" id="forgotBtn" style="display:block;">click để lấy lại mật khẩu</a>
+    <a href="#" id="forgotBtn" style="display:block;">click để lấy lại mật khẩu</a>
   </div>
-
+  
   
   <!-- Link sang register -->
   <a href="register.html">Chưa có tài khoản? Bấm vào đây</a>
 </div>
+
+<script src="./js/firebase-config.js"></script>
 <script src="./js/login.js"></script>
+
+
 
 </body>
 </html>

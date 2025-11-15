@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Đăng ký</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <!-- CSS riêng -->
  <link rel="stylesheet" href="css/common.css">
 <link rel="stylesheet" href="css/register.css">
@@ -41,10 +41,16 @@ const auth = firebase.auth();
   <h3>Tạo tài khoản</h3>
   <input type="text" id="name" placeholder="Nhập họ tên">
   <input type="email" id="email" placeholder="Nhập email">
-  <input type="password" id="pass" placeholder="Nhập mật khẩu">
+  <div class="password-wrapper">
+  <input type="password" id="pass" placeholder="Mật khẩu">
+  <span id="togglePass" class="toggle-pass">
+    <i class="fa-regular fa-eye"></i>
+  </span>
+</div>
   <button onclick="register()">Đăng ký</button>
   <p id="msg"></p>
   <a href="login.html">← Quay lại đăng nhập</a>
 </div>
+<script src="js/firebase-config.js"></script>
 </body>
 </html>

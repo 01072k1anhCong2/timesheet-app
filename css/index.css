@@ -379,7 +379,7 @@ display: flex;
 
 .fixed-inputs input[type="number"],
 .fixed-inputs input[type="time"] {
-  width: 70px;
+  width: 120px;
   padding: 4px 6px;
   font-size: 14px;
   border-radius: 4px;
