@@ -491,6 +491,8 @@ display: flex;
 /* Khi mở sidebar */
 .sidebar.active {
   left: 0;
+  box-shadow: 4px 0 20px rgba(0,0,0,0.3); /* đổ bóng bên phải */
+  transition: left 0.3s ease, box-shadow 0.3s ease; 
 }
 
 /* Links */

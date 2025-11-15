@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Quản lý công & lương</title>
+<!-- icon link -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+/>
 
 <!-- CSS -->
 <link rel="stylesheet" href="./css/common.css">
@@ -25,6 +30,25 @@
 
 <!-- Sidebar -->
 <nav id="sidebar" class="sidebar">
+  
+<div class="profile-card">
+  <img src="./images/avt.png" alt="Avatar" class="avatar" id="avatarImg">
+
+  <!-- Phần tên -->
+  <div class="profile-info">
+    <span class="name">Người dùng</span>
+    <input type="text" id="nameInput" placeholder="Nhập tên mới" style="display:none;">
+  </div>
+
+  <!-- Phần nút -->
+  <div class="profile-actions">
+    <button id="editNameBtn">Đổi tên</button>
+    <button id="saveNameBtn" style="display:none;">Lưu tên</button>
+    <input type="file" id="avatarInput" accept="image/*" style="display:none;">
+    <button id="changeAvatarBtn">Đổi avatar</button>
+  </div>
+</div>
+
   <ul>
     <li><a href="#" id="logoutBtn">🚪Đăng xuất</a></li>
   </ul>
@@ -52,13 +76,6 @@
   <img src="./images/avt.png" alt="Avatar" class="avatar" id="avatarImg">
   <div class="profile-info">
     <span class="name">Người dùng</span>
-    <!-- Input đổi tên -->
-    <input type="text" id="nameInput" placeholder="Nhập tên mới" style="display:none;">
-    <button id="editNameBtn">Đổi tên</button>
-    <button id="saveNameBtn" style="display:none;">Lưu tên</button>
-        <!-- Đổi avatar -->
-    <input type="file" id="avatarInput" accept="image/*" style="display:none;">
-    <button id="changeAvatarBtn">Đổi avatar</button>
   </div>
  </div>
 
@@ -139,7 +156,7 @@
 <!-- Toast notification đổi thành công-->
 <div id="toast" class="toast"></div>
 <!-- nút cuộn lên đầu trang -->
-<button id="scrollTopBtn" title="Lên đầu trang">⬆</button>
+<button id="scrollTopBtn" title="Lên đầu trang"><i class="fas fa-arrow-up"></i></button>
 
 <!-- JS -->
 <script src="./js/index.js"></script>

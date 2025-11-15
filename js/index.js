@@ -1,4 +1,5 @@
 var currentUID = null;
+// nut toggle sidebar
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
 const mainContent = document.querySelector(".main-content");
@@ -8,13 +9,22 @@ menuToggle.addEventListener("click", () => {
   mainContent.classList.toggle("sidebar-open");
 });
 
-// Ví dụ: đóng sidebar khi click link (nếu muốn)
+// đóng sidebar khi click link (nếu muốn)
 document.querySelectorAll(".sidebar a").forEach(link => {
   link.addEventListener("click", () => {
     sidebar.classList.remove("active");
     mainContent.classList.remove("sidebar-open");
   });
 });
+// đóng sidebar khi click ra ngoài
+document.addEventListener("click", (e) => {
+  // kiểm tra click không phải trong sidebar và không phải nút toggle
+  if (!sidebar.contains(e.target) && !menuToggle.contains(e.target)) {
+    sidebar.classList.remove("active");
+    mainContent.classList.remove("sidebar-open");
+  }
+});
+
 
 // Hàm hiển thị toast
 function showToast(message, duration = 3000) {
@@ -56,9 +66,9 @@ firebase.auth().onAuthStateChanged(user => {
     currentUID = user.uid;
 
     // Hiển thị tên từ Auth
-    const nameSpan = document.querySelector(".profile-info .name");
+    const nameSpans = document.querySelectorAll(".profile-info .name");
     // bắt đâu đỏi tên  
-    if(nameSpan) nameSpan.innerText = user.displayName || "Người dùng";
+    if(nameSpans) nameSpans.forEach(span => span.innerText = user.displayName || "Người dùng");
     
 
 // Đổi avatar
@@ -122,8 +132,8 @@ avatarInput.onchange = async (e) => {
   editBtn.onclick = () => {
   nameInput.style.display = "inline-block";
   saveBtn.style.display = "inline-block";
-  nameInput.value = nameSpan.innerText; // hiện tên hiện tại
-  nameSpan.style.display = "none";
+  nameInput.value = nameSpans[0].innerText; // Lấy tên hiện tại từ 1 span
+  nameSpans.forEach(span => span.style.display = "none");
 };
 
 // Nút “Lưu tên”
@@ -137,8 +147,8 @@ saveBtn.onclick = () => {
   firebase.auth().currentUser.updateProfile({
     displayName: newName
   }).then(() => {
-    nameSpan.innerText = newName;
-    nameSpan.style.display = "inline-block";
+    nameSpans.forEach(span => span.innerText = newName);
+    nameSpans.forEach(span => span.style.display = "inline-block");
     nameInput.style.display = "none";
     saveBtn.style.display = "none";
     showToast("Đổi tên thành công!"); // toast hiển thị giữa màn hình từ trên xuống
