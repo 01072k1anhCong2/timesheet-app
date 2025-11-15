@@ -700,6 +700,18 @@ function calc() {
   document.getElementById("total").innerText = total.toLocaleString();
   document.getElementById("floatingTotalValue").innerText = total.toLocaleString();
 }
+// nút cuộn lên đầu trang
+const scrollBtn = document.getElementById("scrollTopBtn");
+
+// Hiển thị nút khi cuộn xuống > 100px
+window.onscroll = () => {
+  scrollBtn.style.display = (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) ? "block" : "none";
+};
+
+// Khi click → cuộn lên đầu trang
+scrollBtn.onclick = () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+};
 
 
 

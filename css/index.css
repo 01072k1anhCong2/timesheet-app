@@ -127,9 +127,9 @@ h2 {
 /* === Controls === */
 .controls {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 15px;
-  align-items: center;
+  align-items: flex-start; /* căn sang trái */
   margin-bottom: 20px;
   padding: 15px;
   background: #f8f9fa;
@@ -407,11 +407,10 @@ button#changeAvatarBtn:hover {
 
 /* ---------- Các input cố định trên đầu ---------- */
 .fixed-inputs {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  justify-content: center;
-  margin: 10px 0;
+display: flex;
+  flex-direction: column; /* xếp các label theo cột */
+  align-items: flex-start; /* căn tất cả sang trái */
+  gap: 10px; /* khoảng cách giữa các label */
 }
 
 .fixed-inputs label {
@@ -496,6 +495,26 @@ button#changeAvatarBtn:hover {
 
 #timesheet button:hover {
   opacity: 0.85;
+}
+/* nút cuộn lên đầu trang */
+#scrollTopBtn {
+  position: fixed;
+  bottom: 15px;       /* cách đáy màn hình */
+  right: 20px;        /* cách bên phải */
+  z-index: 1000;
+  background-color: #f0f0f0;
+  color: rgb(10, 10, 10);
+  border: none;
+  padding: 5px 14px;
+  border-radius: 10%;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.3);
+  display: none;      /* mặc định ẩn */
+}
+
+#scrollTopBtn:hover {
+  background-color: #b9b9b9;
 }
 
 
