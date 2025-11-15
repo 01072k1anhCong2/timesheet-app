@@ -20,3 +20,4 @@ Ngày	|Giờ vào	|Giờ ra	|Số giờ	|Lương|	Hành động
 …dòng chính…	…	…	…	…	…	              |nút Thêm
 Giờ giải lao| 	Tiền đi	|  tien ve |nút Xóa
   gia tri         gia tri   gia tri
+

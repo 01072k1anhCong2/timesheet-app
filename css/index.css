@@ -486,6 +486,8 @@ display: flex;
   transition: left 0.3s ease;
   padding-top: 60px;
   z-index: 1000;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Khi mở sidebar */
@@ -528,4 +530,35 @@ display: flex;
   transition: margin-left 0.3s ease;
 }
 
+/* Mục placeholder */
+.sidebar ul li.placeholder {
+  background-color: #ececec;
+  padding: 12px;
+  border-radius: 0px;
+  color: #000000;
+  cursor: not-allowed;
+  text-align: center;
+  transition: background 0.3s;
+  margin-bottom: 0.5px;
+}
+
+.sidebar ul li.placeholder:hover {
+  background-color: #bebebe;
+}
+
+/* Logout luôn dưới cùng và sang phải */
+#logoutBtn {
+  margin-top: auto;      /* đẩy xuống đáy */
+  align-self: flex-end;  /* sang phải */
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 8px;
+  background-color: #ebb6b6;
+  color: #000;
+  transition: background 0.3s;
+}
+
+#logoutBtn:hover {
+  background-color: #c9302c;
+}
 
