@@ -200,7 +200,7 @@ td {
 /* Tổng lương nổi */
 #floatingTotal {
   position: fixed;
-  right: 10px;
+  left: 10px;
   bottom: 10px;
   background: #ffd862;
   padding: 10px 14px;
