@@ -97,18 +97,6 @@
     75% { transform: translateX(-5px); }
   }
 
-  /* Banner đăng ký */
-  .register-banner {
-    background: linear-gradient(90deg, #2bb837, #6c8ca5);
-    color: white;
-    text-align: center;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    animation: bounce 1.5s infinite alternate;
-    font-size:14px;
-  }
 
   @keyframes bounce {
     0% { transform: translateY(0px); }
@@ -121,7 +109,6 @@
       width: 100%;
       padding: 20px;
     }
-    .register-banner { font-size:13px; padding:8px; }
     input, button { font-size:14px; padding:8px; }
     p#msg { font-size:13px; }
     a { font-size:12px; }

@@ -46,6 +46,7 @@ document.getElementById("sendResetBtn").onclick = () => {
     loginForm.style.display = "block";
     forgotBtn.style.display = "block";
     document.getElementById("sendResetBtn").innerText = "Gửi";
+    titleH3.innerText = "Đăng nhập";
     return;
   }
 

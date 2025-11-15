@@ -19,20 +19,6 @@ h2 {
   text-align: center;              /* Canh giữa chữ */
 }
 
-/* === Banner chào mừng === */
-.welcome-banner {
-  text-align: center;
-  font-size: 22px;
-  font-weight: bold;
-  padding: 15px 10px;
-  border-radius: 10px;
-  margin-bottom: 20px;
-  background: linear-gradient(270deg, #746869, #2c2b2a, #585461, #cab7c5); /* Gradient động */
-  background-size: 800% 800%;
-  color: white;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-  animation: gradientBG 10s ease infinite, swing 3s ease-in-out infinite; /* Hiệu ứng gradient + swing */
-}
 
 /* Animation gradient */
 @keyframes gradientBG {
@@ -213,28 +199,7 @@ td {
   font-size: 14px;
 }
 
-/* === Logout button === */
-#logoutBtn {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  background-color: #3f3736;
-  color: white;
-  border: none;
-  padding: 10px 14px;
-  border-radius: 30px;
-  font-weight: bold;
-  font-size: 10px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  cursor: pointer;
-  z-index: 9999;
-  transition: 0.2s;
-}
 
-#logoutBtn:hover {
-  background-color: #7d7e78;
-  transform: scale(1.05);
-}
 /* --- Tô màu các dòng chính (ngày 1 → 31) --- */
 #timesheetBody > tr {
   background-color: #a9cce4;
@@ -381,15 +346,7 @@ button.apply-btn:hover {
   background-color: #1e8449;
 }
 
-/* Nút logout (xám) */
-button.logout-btn {
-  background-color: #7f8c8d; 
-  color: #fff;
-}
 
-button.logout-btn:hover {
-  background-color: #606d70;
-}
 
 /* Style tổng quan bảng để nút đẹp hơn */
 #timesheetBody button {
@@ -514,8 +471,59 @@ display: flex;
 }
 
 #scrollTopBtn:hover {
-  background-color: #b9b9b9;
+  background-color: #e9e8e8;
 }
 
+/* Sidebar ẩn bên trái */
+.sidebar {
+  position: fixed;
+  left: -250px;   /* ẩn ngoài màn hình */
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background-color: #ffffff;
+  color: rgb(255, 255, 255);
+  transition: left 0.3s ease;
+  padding-top: 60px;
+  z-index: 1000;
+}
+
+/* Khi mở sidebar */
+.sidebar.active {
+  left: 0;
+}
+
+/* Links */
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+.sidebar ul li {
+  padding: 15px 20px;
+}
+.sidebar ul li a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  display: block;
+}
+
+/* Hamburger nút */
+.hamburger {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  font-size: 24px;
+  background: rgb(192, 192, 192);
+  border: none;
+  color: #000000;
+  cursor: pointer;
+  z-index: 1100;
+}
+
+/* Khi sidebar mở, đẩy nội dung chính sang phải */
+.main-content.sidebar-open {
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+}
 
 

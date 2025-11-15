@@ -1,4 +1,21 @@
 var currentUID = null;
+const menuToggle = document.getElementById("menuToggle");
+const sidebar = document.getElementById("sidebar");
+const mainContent = document.querySelector(".main-content");
+
+menuToggle.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+  mainContent.classList.toggle("sidebar-open");
+});
+
+// Ví dụ: đóng sidebar khi click link (nếu muốn)
+document.querySelectorAll(".sidebar a").forEach(link => {
+  link.addEventListener("click", () => {
+    sidebar.classList.remove("active");
+    mainContent.classList.remove("sidebar-open");
+  });
+});
+
 // Hàm hiển thị toast
 function showToast(message, duration = 3000) {
   const toast = document.getElementById("toast");

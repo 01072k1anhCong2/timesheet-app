@@ -83,17 +83,6 @@
     display: block;
   }
 
-  /* Banner login */
-  .login-banner {
-    background: linear-gradient(90deg, #1a73e8, #42a5f5);
-    color: white;
-    font-weight: bold;
-    padding: 10px;
-    border-radius: 8px;
-    margin-bottom: 15px;
-    animation: bounce 1.5s infinite alternate;
-    font-size: 14px;
-  }
 
   /* Hiệu ứng động nhẹ */
   @keyframes bounce {
@@ -126,10 +115,6 @@
     .box {
       width: 100%;
       padding: 20px;
-    }
-    .login-banner {
-      font-size: 13px;
-      padding: 8px;
     }
     input, button {
       font-size: 14px;
