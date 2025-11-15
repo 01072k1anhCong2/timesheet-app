@@ -2,6 +2,7 @@
 const loginForm = document.querySelector(".login-form");
 const resetForm = document.getElementById("resetForm");
 const forgotBtn = document.getElementById("forgotBtn");
+const titleH3 = document.querySelector("h3"); 
 function login(){
   let email = document.getElementById("email").value;
   let pass  = document.getElementById("pass").value;
@@ -29,6 +30,7 @@ document.getElementById("forgotBtn").onclick = (e) => {
   loginForm.style.display = "none";
   resetForm.style.display = "block";
   forgotBtn.style.display = "none";
+  titleH3.innerText = "Cấp lại mật khẩu";
   document.getElementById("msg").innerText = "";
 };
 
@@ -42,6 +44,8 @@ document.getElementById("sendResetBtn").onclick = () => {
     msg.innerText = "Vui lòng nhập email để lấy lại mật khẩu!";
     resetForm.style.display = "none";
     loginForm.style.display = "block";
+    forgotBtn.style.display = "block";
+    document.getElementById("sendResetBtn").innerText = "Gửi";
     return;
   }
 
@@ -74,4 +78,6 @@ backToLoginBtn.addEventListener("click", () => {
   resetForm.style.display = "none";   // ẩn form reset
   loginForm.style.display = "block";  // hiện form login
   forgotBtn.style.display = "block"; // hiện link quên mật khẩu
+  titleH3.innerText = "Đăng nhập";    // đổi tiêu đề
+  document.getElementById("msg").innerText = ""; // xóa thông báo
 });
