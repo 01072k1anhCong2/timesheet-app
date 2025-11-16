@@ -9,7 +9,7 @@ menuToggle.addEventListener("click", () => {
   mainContent.classList.toggle("sidebar-open");
 });
 
-// đóng sidebar khi click link (nếu muốn)
+// đóng sidebar khi click link 
 document.querySelectorAll(".sidebar a").forEach(link => {
   link.addEventListener("click", () => {
     sidebar.classList.remove("active");

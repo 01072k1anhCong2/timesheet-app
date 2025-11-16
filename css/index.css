@@ -493,7 +493,7 @@ display: flex;
 /* Khi mở sidebar */
 .sidebar.active {
   left: 0;
-  box-shadow: 4px 0 20px rgba(0,0,0,0.3); /* đổ bóng bên phải */
+  box-shadow: 10px 0 70px rgba(0,0,0,0.4); /* đổ bóng bên phải */
   transition: left 0.3s ease, box-shadow 0.3s ease; 
 }
 
@@ -526,8 +526,9 @@ display: flex;
 
 /* Khi sidebar mở, đẩy nội dung chính sang phải */
 .main-content.sidebar-open {
-  margin-left: 250px;
   transition: margin-left 0.3s ease;
+  pointer-events: none;
+  opacity: 0.7;
 }
 
 /* Mục placeholder */
