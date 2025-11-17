@@ -7,12 +7,12 @@
 /* Luôn luôn nhỏ, không phụ thuộc màn hình */
 tr.sub-row-header td,
 tr.sub-row td {
-  font-size: 12px;   /* chữ nhỏ hơn mặc định */
+  font-size: 10px;   /* chữ nhỏ hơn mặc định */
   padding: 4px 6px;  /* giảm padding để hàng thon hơn */
 }
 
 tr.sub-row td input {
-  font-size: 12px;
+  font-size: 10px;
   padding: 2px 4px;
   height: 24px;      /* hoặc auto nếu muốn tự động */
 }
