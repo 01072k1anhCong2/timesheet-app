@@ -3,6 +3,25 @@
    ========================================= */
 
 /* === Container chính === */
+
+/* Luôn luôn nhỏ, không phụ thuộc màn hình */
+tr.sub-row-header td,
+tr.sub-row td {
+  font-size: 12px;   /* chữ nhỏ hơn mặc định */
+  padding: 4px 6px;  /* giảm padding để hàng thon hơn */
+}
+
+tr.sub-row td input {
+  font-size: 12px;
+  padding: 2px 4px;
+  height: 24px;      /* hoặc auto nếu muốn tự động */
+}
+
+tr.sub-row td button {
+  font-size: 10px;
+  padding: 2px 4px;
+}
+
 .container {
   max-width: 1400px;               /* Giới hạn chiều rộng tối đa */
   margin: 0 auto;                  /* Canh giữa trang */
