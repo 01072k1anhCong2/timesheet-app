@@ -721,15 +721,17 @@ function calc() {
     const inputOut = r.cells[2]?.querySelector("input")?.value || "";
     const cHours = r.cells[3];
     const cWage = r.cells[4];
-
     if (inputIn && inputOut) {
       let [ih, im] = inputIn.split(":").map(Number);
       let [oh, om] = inputOut.split(":").map(Number);
 
       let h = oh - ih;
       let m = om - im;
+      // nếu phút âm, mượn 1 giờ
       if (m < 0) { h--; m += 60; }
-      if (h < 0) { h = 0; m = 0; }
+
+      // nếu giờ âm, cộng 24 (làm qua nửa đêm)
+      if (h < 0) { h += 24; }
 
       let totalHours = h + m / 60;
 
@@ -737,23 +739,40 @@ function calc() {
       let breakHours = 0;
       let subMoney = 0;
       let nextTr = r.nextElementSibling;
-
       while (nextTr && (nextTr.classList.contains("sub-row") || nextTr.classList.contains("sub-row-header"))) {
         if (nextTr.classList.contains("sub-row")) {
           const inputs = nextTr.querySelectorAll("input");
           const breakInput = parseInt(inputs[0]?.value) || 0; // phút
           const goInput = parseFloat(inputs[1]?.value) || 0;
           const backInput = parseFloat(inputs[2]?.value) || 0;
-
           breakHours += breakInput / 60;
           subMoney += goInput + backInput;
         }
         nextTr = nextTr.nextElementSibling;
       }
 
-      const realHours = Math.max(totalHours - breakHours, 0);
-      const wageByHour = Math.round(realHours * rate);
-      const wage = wageByHour + subMoney;
+      // --- tính giờ làm qua đêm ---
+      let start = ih + im / 60; 
+      // giờ vào
+      let end = oh + om / 60;   // giờ ra
+      if (end < start) end += 24; // làm qua nửa đêm
+
+      const NIGHT_START = 22;
+      const NIGHT_END = 29; // 5:00 sáng + 24h
+      const NIGHT_RATE = 1.25;
+
+      // tính giờ đêm
+      let nightHours = Math.max(0, Math.min(end, NIGHT_END) - Math.max(start, NIGHT_START));
+
+      // giờ thực tế đã trừ giờ nghỉ
+      let realHours = Math.max(totalHours - breakHours, 0);
+      let normalHours = Math.max(realHours - nightHours, 0);
+
+      // tính lương
+      let normalWage = Math.round(normalHours * rate);
+      let nightWage = Math.round(nightHours * rate * NIGHT_RATE);
+      let wage = normalWage + nightWage + subMoney;
+
 
       cHours.innerText = realHours.toFixed(2);
       cWage.innerText = wage.toLocaleString();
