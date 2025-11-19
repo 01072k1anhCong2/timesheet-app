@@ -1,40 +1,62 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Đăng ký</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<!-- CSS riêng -->
- <link rel="stylesheet" href="css/common.css">
-<link rel="stylesheet" href="css/register.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng ký</title>
 
-<!-- Firebase SDK -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="js/firebase-config.js"></script>
+  <!-- Font Awesome icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- CSS chung và riêng cho register -->
+  <link rel="stylesheet" href="css/common.css">  <!-- body chung, box cơ bản, media query -->
+  <link rel="stylesheet" href="css/register.css"> <!-- style riêng cho register -->
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="js/firebase-config.js"></script>
 </head>
 
 <body>
-<div class="box">
+  <!-- Box chính chứa form register -->
+  <div class="box">
+
+    <!-- Card giới thiệu -->
     <div class="card-ltc">
       Tính lương tay by dev <br> LÂM THÀNH CÔNG phát triển
-  </div>
-  <div class="tick">✔</div>
-  <h3>Tạo tài khoản</h3>
-  <input type="text" id="name" placeholder="Nhập họ tên">
-  <input type="email" id="email" placeholder="Nhập email">
-  <div class="password-wrapper">
-  <input type="password" id="pass" placeholder="Mật khẩu">
-  <span id="togglePass" class="toggle-pass">
-    <i class="fa-regular fa-eye"></i>
-  </span>
-</div>
-  <button onclick="register()">Đăng ký</button>
-  <p id="msg"></p>
-  <a href="login.html">← Quay lại đăng nhập</a>
-</div>
+    </div>
 
-<script src="js/register.js"></script>
+    <!-- Tick icon thành công -->
+    <div class="tick">✔</div>
+
+    <h3>Tạo tài khoản</h3>
+
+    <!-- Input họ tên -->
+    <input type="text" id="name" placeholder="Nhập họ tên">
+
+    <!-- Input email -->
+    <input type="email" id="email" placeholder="Nhập email">
+
+    <!-- Input password với toggle hiển thị mật khẩu -->
+    <div class="password-wrapper">
+      <input type="password" id="pass" placeholder="Mật khẩu">
+      <span id="togglePass" class="toggle-pass">
+        <i class="fa-regular fa-eye"></i>
+      </span>
+    </div>
+
+    <!-- Nút đăng ký -->
+    <button onclick="register()">Đăng ký</button>
+
+    <!-- Thông báo lỗi / thành công -->
+    <p id="msg"></p>
+
+    <!-- Link quay lại login -->
+    <a href="login.html">← Quay lại đăng nhập</a>
+  </div>
+
+  <!-- JS xử lý register -->
+  <script src="js/register.js"></script>
 </body>
 </html>

@@ -1,163 +1,163 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Quản lý công & lương</title>
-<!-- icon link -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
-/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quản lý công & lương</title>
 
-<!-- CSS -->
-<link rel="stylesheet" href="./css/common.css">
-<link rel="stylesheet" href="./css/index.css">
+  <!-- Font Awesome icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-<!-- Firebase -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+  <!-- CSS -->
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/index.css">
 
-<!-- Firebase config -->
-<script src="./js/firebase-config.js" ></script> 
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-storage-compat.js"></script>
+
+  <!-- Firebase config -->
+  <script src="./js/firebase-config.js"></script>
 </head>
 <body>
-<!-- Nút Hamburger -->
-<button id="menuToggle" class="hamburger">&#9776;</button>
+  <!-- Nút Hamburger toggle sidebar -->
+  <button id="menuToggle" class="hamburger">&#9776;</button>
 
-<!-- Sidebar -->
-<nav id="sidebar" class="sidebar">
-  
-<div class="profile-card">
-  <img src="./images/avt.png" alt="Avatar" class="avatar" id="avatarImg">
+  <!-- Sidebar -->
+  <nav id="sidebar" class="sidebar">
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <img src="./images/avt.png" alt="Avatar" class="avatar" id="avatarImg">
+      <div class="profile-info">
+        <span class="name">Người dùng</span>
+        <input type="text" id="nameInput" placeholder="Nhập tên mới" style="display:none;">
+      </div>
+      <div class="profile-actions">
+        <button id="editNameBtn">Đổi tên</button>
+        <button id="saveNameBtn" style="display:none;">Lưu tên</button>
+        <input type="file" id="avatarInput" accept="image/*" style="display:none;">
+        <button id="changeAvatarBtn">Đổi avatar(đang fix)</button>
+      </div>
+    </div>
 
-  <!-- Phần tên -->
-  <div class="profile-info">
-    <span class="name">Người dùng</span>
-    <input type="text" id="nameInput" placeholder="Nhập tên mới" style="display:none;">
-  </div>
-
-  <!-- Phần nút -->
-  <div class="profile-actions">
-    <button id="editNameBtn">Đổi tên</button>
-    <button id="saveNameBtn" style="display:none;">Lưu tên</button>
-    <input type="file" id="avatarInput" accept="image/*" style="display:none;">
-    <button id="changeAvatarBtn">Đổi avatar(đang fix)</button>
-  </div>
-</div>
-<!-- tao cac muc trống dự tính cho sidebar -->
+    <!-- Sidebar Placeholder Items -->
     <ul>
       <li class="placeholder">📁 Mục 1 (dự tính)</li>
       <li class="placeholder">📁 Mục 2 (dự tính)</li>
       <li class="placeholder">📁 Mục 3 (dự tính)</li>
       <li><a href="#" id="logoutBtn">🚪Đăng xuất</a></li>
     </ul>
-    <!-- Logout -->
-  
-</nav>
-<!-- Floating total hiển thị khi cuộn -->
-<div id="floatingTotal">
-  Tổng: <span id="floatingTotalValue">0</span> ¥
-</div>
+  </nav>
 
-<div class="container main-content">
-  <div class="card-ltc">
-  Tính lương tay by dev <br> LÂM THÀNH CÔNG phát triển
+  <!-- Floating total khi cuộn -->
+  <div id="floatingTotal">
+    Tổng: <span id="floatingTotalValue">0</span> ¥
   </div>
 
+  <!-- Main Content -->
+  <div class="container main-content">
 
-  <h2>📋 Quản lý công & lương</h2>
+    <!-- Card giới thiệu -->
+    <div class="card-ltc">
+      Tính lương tay by dev <br> LÂM THÀNH CÔNG phát triển
+    </div>
 
-  <!-- Profile -->
-  <div class="profile-card">
-  <img src="./images/avt.png" alt="Avatar" class="avatar" id="avatarImg">
-  <div class="profile-info">
-    <span class="name">Người dùng</span>
-  </div>
- </div>
+    <h2>📋 Quản lý công & lương</h2>
 
+    <!-- Profile nhỏ bên main content -->
+    <div class="profile-card">
+      <img src="./images/avt.png" alt="Avatar" class="avatar" id="avatarImg">
+      <div class="profile-info">
+        <span class="name">Người dùng</span>
+      </div>
+    </div>
 
-  <!-- Controls -->
-  <div class="controls">
-    <label>📅 Chọn tháng:
-      <select id="monthSelect"></select>
-    </label>
-    <label>💴 Tiền lương/giờ:
-      <input type="number" id="rate" value="1100">
-    </label>
-      <!-- Mục nhập giá trị cố định cho sub-row -->
-<div class="fixed-inputs">
-    <label>Giờ vào:
-      <input type="time" id="fixedIn">
-      <button id="applyInBtn">Cố Định</button>
-      <button id="clearInBtn" class="reset-btn">Xóa</button>
-    </label>
-    <label>Giờ ra:
-      <input type="time" id="fixedOut">
-      <button id="applyOutBtn">Cố Định</button>
-      <button id="clearOutBtn" class="reset-btn">Xóa</button>
-    </label>
-    <label>Giờ giải lao:
-      <input type="number" id="fixedBreak" placeholder="Phút">
-      <button id="applyBreakBtn">Cố Định</button>
-      <button id="clearBreakBtn" class="reset-btn">Xóa</button>
-    </label>
-    <label>Tiền đi:
-      <input type="number" id="fixedGo" placeholder="¥">
-      <button id="applyGoBtn">Cố Định</button>
-      <button id="clearGoBtn" class="reset-btn">Xóa</button>
-    </label>
-    <label>Tiền về:
-      <input type="number" id="fixedBack" placeholder="¥">
-      <button id="applyBackBtn">Cố Định</button>
-      <button id="clearBackBtn" class="reset-btn">Xóa</button>
-    </label>
+    <!-- Controls -->
+    <div class="controls">
+      <!-- Chọn tháng -->
+      <label>📅 Chọn tháng:
+        <select id="monthSelect"></select>
+      </label>
+
+      <!-- Tiền lương/giờ -->
+      <label>💴 Tiền lương/giờ:
+        <input type="number" id="rate" value="1100">
+      </label>
+
+      <!-- Fixed Inputs cho sub-row -->
+      <div class="fixed-inputs">
+        <label>Giờ vào:
+          <input type="time" id="fixedIn">
+          <button id="applyInBtn">Cố Định</button>
+          <button id="clearInBtn" class="reset-btn">Xóa</button>
+        </label>
+        <label>Giờ ra:
+          <input type="time" id="fixedOut">
+          <button id="applyOutBtn">Cố Định</button>
+          <button id="clearOutBtn" class="reset-btn">Xóa</button>
+        </label>
+        <label>Giờ giải lao:
+          <input type="number" id="fixedBreak" placeholder="Phút">
+          <button id="applyBreakBtn">Cố Định</button>
+          <button id="clearBreakBtn" class="reset-btn">Xóa</button>
+        </label>
+        <label>Tiền đi:
+          <input type="number" id="fixedGo" placeholder="¥">
+          <button id="applyGoBtn">Cố Định</button>
+          <button id="clearGoBtn" class="reset-btn">Xóa</button>
+        </label>
+        <label>Tiền về:
+          <input type="number" id="fixedBack" placeholder="¥">
+          <button id="applyBackBtn">Cố Định</button>
+          <button id="clearBackBtn" class="reset-btn">Xóa</button>
+        </label>
+      </div>
+    </div>
+
+    <!-- Table hiển thị công/lương -->
+    <div class="table-wrapper">
+      <table id="timesheet">
+        <thead>
+          <tr>
+            <th>Ngày</th>
+            <th>Giờ vào</th>
+            <th>Giờ ra</th>
+            <th>Số giờ</th>
+            <th>Lương</th>
+            <th>Hành động</th>
+          </tr>
+        </thead>
+        <tbody id="timesheetBody"></tbody>
+      </table>
+    </div>
+
+    <!-- Total box -->
+    <div class="total-box">
+      <h3>TỔNG LƯƠNG THÁNG <span id="currentMonth"></span></h3>
+      <div class="total-amount"><span id="total">0</span> 円</div>
     </div>
   </div>
 
-  <!-- Table -->
-  <div class="table-wrapper">
-    <table id="timesheet">
-      <thead>
-        <tr>
-          <th>Ngày</th>
-          <th>Giờ vào</th>
-          <th>Giờ ra</th>
-          <th>Số giờ</th>
-          <th>Lương</th>
-          <th>Hành động</th>
-        </tr>
-      </thead>
-      <tbody id="timesheetBody"></tbody>
-    </table>
-  </div>
-
-  <!-- Total box -->
-  <div class="total-box">
-    <h3>TỔNG LƯƠNG THÁNG <span id="currentMonth"></span></h3>
-    <div class="total-amount"><span id="total">0</span> 円</div>
-  </div>
-</div>
-
-
-<!-- Custom confirm modal hỏi khi đăng xuất hay nút cập nhật gì đó -->
-<div id="customConfirm" class="modal">
-  <div class="modal-content">
-    <p id="confirmText">Bạn có chắc không vậy?</p>
-    <div class="modal-buttons">
-      <button id="confirmOk">OK</button>
-      <button id="confirmCancel">Hủy</button>
+  <!-- Custom confirm modal -->
+  <div id="customConfirm" class="modal">
+    <div class="modal-content">
+      <p id="confirmText">Bạn có chắc không vậy?</p>
+      <div class="modal-buttons">
+        <button id="confirmOk">OK</button>
+        <button id="confirmCancel">Hủy</button>
+      </div>
     </div>
   </div>
-</div>
-<!-- Toast notification đổi thành công-->
-<div id="toast" class="toast"></div>
-<!-- nút cuộn lên đầu trang -->
-<button id="scrollTopBtn" title="Lên đầu trang"><i class="fas fa-arrow-up"></i></button>
 
-<!-- JS -->
-<script src="./js/index.js"></script>
+  <!-- Toast notification -->
+  <div id="toast" class="toast"></div>
+
+  <!-- Nút cuộn lên đầu trang -->
+  <button id="scrollTopBtn" title="Lên đầu trang"><i class="fas fa-arrow-up"></i></button>
+
+  <!-- JS chính -->
+  <script src="./js/index.js"></script>
 </body>
 </html>

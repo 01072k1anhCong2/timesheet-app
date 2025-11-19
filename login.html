@@ -1,72 +1,76 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Đăng nhập</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đăng nhập</title>
 
-<!-- === CSS chung và riêng cho login === -->
-<link rel="stylesheet" href="./css/common.css"> <!-- body chung, box cơ bản, media query -->
-<link rel="stylesheet" href="./css/login.css">  <!-- style riêng cho login -->
+  <!-- Font Awesome icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Firebase JS -->
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
-<script src="./js/firebase-config.js" ></script> 
+  <!-- === CSS chung và riêng cho login === -->
+  <link rel="stylesheet" href="./css/common.css"> <!-- body chung, box cơ bản, media query -->
+  <link rel="stylesheet" href="./css/login.css">  <!-- style riêng cho login -->
+
+  <!-- Firebase JS -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="./js/firebase-config.js"></script>
 </head>
 
 <body>
-  
+  <!-- Box chính chứa form login -->
   <div class="box">
+
+    <!-- Card giới thiệu -->
     <div class="card-ltc">
       Tính lương tay by dev <br> LÂM THÀNH CÔNG phát triển
     </div>
-    
-    <!-- Tick icon thành công -->
+
+    <!-- Tick icon thành công (hiển thị khi login thành công) -->
     <div class="tick">✔</div>
-    
+
     <h3>Đăng nhập</h3>
-    
-  <!-- Input email & password -->
-<div class="login-form">
-  <input type="email" id="email" placeholder="Email">
-<div class="password-wrapper">
-  <input type="password" id="pass" placeholder="Mật khẩu">
-  <span id="togglePass" class="toggle-pass">
-    <i class="fa-regular fa-eye"></i>
-  </span>
-</div>
 
-  
-  <!-- Nút đăng nhập -->
-  <button onclick="login()">Đăng nhập</button>
-</div>
+    <!-- Form đăng nhập -->
+    <div class="login-form">
+      <!-- Email input -->
+      <input type="email" id="email" placeholder="Email">
 
-  <!-- Thông báo lỗi / thành công -->
-  <p id="msg"></p>
-  <!-- lấy lại mật khẩu -->
-  <div id="resetForm" style="display:none;">
-    <input type="email" id="resetEmail" placeholder="Nhập email của bạn">
-    <div class="reset-buttons"> 
-      <button id="backToLoginBtn">trở lại đăng nhập</button>
-      <button id="sendResetBtn" >Gửi</button>
+      <!-- Password input với toggle hiển thị mật khẩu -->
+      <div class="password-wrapper">
+        <input type="password" id="pass" placeholder="Mật khẩu">
+        <span id="togglePass" class="toggle-pass">
+          <i class="fa-regular fa-eye"></i>
+        </span>
+      </div>
+
+      <!-- Nút đăng nhập -->
+      <button onclick="login()">Đăng nhập</button>
     </div>
+
+    <!-- Thông báo lỗi / thành công -->
+    <p id="msg"></p>
+
+    <!-- Form lấy lại mật khẩu -->
+    <div id="resetForm" style="display:none;">
+      <input type="email" id="resetEmail" placeholder="Nhập email của bạn">
+      <div class="reset-buttons">
+        <button id="backToLoginBtn">Trở lại đăng nhập</button>
+        <button id="sendResetBtn">Gửi</button>
+      </div>
+    </div>
+
+    <!-- Link lấy lại mật khẩu -->
+    <div class="forgot">
+      <a href="#" id="forgotBtn" style="display:block;">Click để lấy lại mật khẩu</a>
+    </div>
+
+    <!-- Link sang trang đăng ký -->
+    <a href="register.html">Chưa có tài khoản? Bấm vào đây</a>
   </div>
-  
-  <div class="forgot">
-    <a href="#" id="forgotBtn" style="display:block;">click để lấy lại mật khẩu</a>
-  </div>
-  
-  
-  <!-- Link sang register -->
-  <a href="register.html">Chưa có tài khoản? Bấm vào đây</a>
-</div>
 
-<script src="./js/login.js"></script>
-
-
-
+  <!-- JS xử lý login -->
+  <script src="./js/login.js"></script>
 </body>
 </html>
