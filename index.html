@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Quản lý công & lương</title>
+  <title data-lang="home_title_index">Quản lý công & lương</title>
 
   <!-- Font Awesome icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -22,6 +22,15 @@
   <script src="./js/firebase-config.js"></script>
 </head>
 <body>
+  <!-- Thanh chọn ngôn ngữ -->
+  <div class="lang-container">
+    <button id="langBtn">🌐 Tiếng Việt</button>
+    <ul id="langList" class="lang-list">
+      <li data-lang="vn">🇻🇳 Tiếng Việt</li>
+      <li data-lang="jp">🇯🇵 日本語</li>
+      <li data-lang="en">🇬🇧 English</li>
+    </ul>
+  </div>
   <!-- Nút Hamburger toggle sidebar -->
   <button id="menuToggle" class="hamburger">&#9776;</button>
 
@@ -60,11 +69,11 @@
   <div class="container main-content">
 
     <!-- Card giới thiệu -->
-    <div class="card-ltc">
+    <div class="card-ltc" data-lang="card_ltc">
       Tính lương tay by dev <br> LÂM THÀNH CÔNG phát triển
     </div>
 
-    <h2>📋 Quản lý công & lương</h2>
+    <h2 data-lang="home_title_index">📋 Quản lý công & lương</h2>
 
     <!-- Profile nhỏ bên main content -->
     <div class="profile-card">
@@ -159,5 +168,7 @@
 
   <!-- JS chính -->
   <script src="./js/index.js"></script>
+    <!-- Ngôn ngữ -->
+  <script type="module" src="./js/lang.js"></script>
 </body>
 </html>

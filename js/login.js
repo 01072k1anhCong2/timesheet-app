@@ -1,8 +1,9 @@
 // ============================================
-// LOGIN.JS - Quản lý đăng nhập & reset mật khẩu
+// Quản lý đăng nhập & reset mật khẩu
 // ============================================
 
 // --- Các phần tử DOM chính ---
+const loginBtn = document.getElementById("loginBtn");
 const loginForm = document.querySelector(".login-form");
 const resetForm = document.getElementById("resetForm");
 const forgotBtn = document.getElementById("forgotBtn");
@@ -13,7 +14,7 @@ const passwordInput = document.getElementById("pass");
 const eyeIcon = togglePass.querySelector("i");
 
 // --- Hàm đăng nhập ---
-function login() {
+loginBtn.addEventListener("click", () =>  {
   const email = document.getElementById("email").value;
   const pass  = document.getElementById("pass").value;
   const box = document.querySelector(".box");
@@ -37,6 +38,7 @@ function login() {
       msg.innerText = "Sai email hoặc mật khẩu rồi má ơi!";
     });
 }
+);
 
 // --- Hiển thị form reset khi bấm "Quên mật khẩu" ---
 forgotBtn.onclick = (e) => {
@@ -44,7 +46,8 @@ forgotBtn.onclick = (e) => {
   loginForm.style.display = "none";   // ẩn form login
   resetForm.style.display = "block";  // hiện form reset
   forgotBtn.style.display = "none";   // ẩn link forgot
-  titleH3.innerText = "Cấp lại mật khẩu";
+  titleH3.innerText = "Cấp lại mật khẩu"; // đổi tiêu đề
+
   document.getElementById("msg").innerText = ""; // xóa thông báo
 };
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Đăng nhập</title>
+  <title data-lang="login">Đăng nhập</title>
 
   <!-- Font Awesome icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -19,34 +19,43 @@
 </head>
 
 <body>
+    <!-- Thanh chọn ngôn ngữ -->
+  <div class="lang-container">
+    <button id="langBtn">🌐 Tiếng Việt</button>
+    <ul id="langList" class="lang-list">
+      <li data-lang="vn">🇻🇳 Tiếng Việt</li>
+      <li data-lang="jp">🇯🇵 日本語</li>
+      <li data-lang="en">🇬🇧 English</li>
+    </ul>
+  </div>
   <!-- Box chính chứa form login -->
   <div class="box">
 
     <!-- Card giới thiệu -->
-    <div class="card-ltc">
+    <div class="card-ltc" data-lang="card_ltc">
       Tính lương tay by dev <br> LÂM THÀNH CÔNG phát triển
     </div>
 
     <!-- Tick icon thành công (hiển thị khi login thành công) -->
     <div class="tick">✔</div>
 
-    <h3>Đăng nhập</h3>
+    <h3 data-lang="login">Đăng nhập</h3>
 
     <!-- Form đăng nhập -->
     <div class="login-form">
       <!-- Email input -->
-      <input type="email" id="email" placeholder="Email">
+      <input type="email" id="email" placeholder="Email" data-lang="email_input">
 
       <!-- Password input với toggle hiển thị mật khẩu -->
       <div class="password-wrapper">
-        <input type="password" id="pass" placeholder="Mật khẩu">
+        <input type="password" id="pass" placeholder="Mật khẩu" data-lang="password">
         <span id="togglePass" class="toggle-pass">
           <i class="fa-regular fa-eye"></i>
         </span>
       </div>
 
       <!-- Nút đăng nhập -->
-      <button onclick="login()">Đăng nhập</button>
+      <button  id="loginBtn" data-lang="login">Đăng nhập</button>
     </div>
 
     <!-- Thông báo lỗi / thành công -->
@@ -54,23 +63,25 @@
 
     <!-- Form lấy lại mật khẩu -->
     <div id="resetForm" style="display:none;">
-      <input type="email" id="resetEmail" placeholder="Nhập email của bạn">
+      <input type="email" id="resetEmail" placeholder="Nhập email của bạn" data-lang="email_input">
       <div class="reset-buttons">
-        <button id="backToLoginBtn">Trở lại đăng nhập</button>
-        <button id="sendResetBtn">Gửi</button>
+        <button  id="backToLoginBtn" data-lang="back_to_login">Trở lại đăng nhập</button>
+        <button id="sendResetBtn" data-lang="send">Gửi</button>
       </div>
     </div>
 
     <!-- Link lấy lại mật khẩu -->
     <div class="forgot">
-      <a href="#" id="forgotBtn" style="display:block;">Click để lấy lại mật khẩu</a>
+      <a href="#" id="forgotBtn" style="display:block;" data-lang="forgot_password">Click để lấy lại mật khẩu</a>
     </div>
 
     <!-- Link sang trang đăng ký -->
-    <a href="register.html">Chưa có tài khoản? Bấm vào đây</a>
+    <a href="register.html" data-lang="no_account">Chưa có tài khoản? Bấm vào đây</a>
   </div>
 
   <!-- JS xử lý login -->
-  <script src="./js/login.js"></script>
+  <script type="module" src="./js/login.js"></script>
+    <!-- Ngôn ngữ -->
+  <script type="module" src="./js/lang.js"></script>
 </body>
 </html>
