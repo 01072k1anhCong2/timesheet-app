@@ -7,7 +7,8 @@
    BIẾN TOÀN CỤC / THAM CHIẾU DOM
    ============================ */
 var currentUID = null;
-
+// kết nối database
+const db = firebase.database();
 // Sidebar / bố cục chính
 const menuToggle = document.getElementById("menuToggle");
 const sidebar = document.getElementById("sidebar");
