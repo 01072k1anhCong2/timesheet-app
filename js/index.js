@@ -828,15 +828,16 @@ const notifBtn = document.getElementById("notifBtn");
 const notifPopup = document.getElementById("notifPopup");
 
 notifBtn.addEventListener("click", () => {
-  notifPopup.style.display = notifPopup.style.display === "block" ? "none" : "block";
+  notifPopup.classList.toggle("active");
 });
 
 // Click ngoài popup để đóng
 document.addEventListener("click", (e) => {
   if (!notifBtn.contains(e.target) && !notifPopup.contains(e.target)) {
-    notifPopup.style.display = "none";
+    notifPopup.classList.remove("active");
   }
 });
+
 
 // Gắn sự kiện cho các nút apply/clear khi DOM đã sẵn sàng
 document.addEventListener("DOMContentLoaded", () => {

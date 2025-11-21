@@ -656,11 +656,12 @@ display: flex;
 
 /* Popup thông báo */
 .notif-popup {
-  display: none;              /* mặc định ẩn */
+  opacity: 0;                 /* ẩn mặc định */
+  transform: translateY(-10px); /* hơi dịch lên trên */
   position: absolute;
-  top: 40px;                  /* cách nút 40px */
-  right: 0;                   /* canh phải */
-  width: 220px;               /* rộng popup */
+  top: 60px;
+  right: 20px;
+  width: 220px;
   padding: 12px;
   background: #fff;
   border: 1px solid #ddd;
@@ -670,7 +671,17 @@ display: flex;
   color: #333;
   z-index: 999;
   text-align: left;
+
+  transition: opacity 0.3s ease, transform 0.3s ease; /* hiệu ứng mượt */
+  pointer-events: none; /* không tương tác khi ẩn */
 }
+/* Khi active */
+.notif-popup.active {
+  opacity: 1;
+  transform: translateY(0); /* về vị trí ban đầu */
+  pointer-events: auto; /* có thể click */
+}
+
 /* Container cuối navbar, căn giữa */
 .contact-wrapper {
   display: flex;
