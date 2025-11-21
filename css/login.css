@@ -33,7 +33,7 @@
     width:100%; 
     margin-top:15px; 
     padding:10px; 
-    background:#1a73e8; 
+    background:#535353; 
     border:none; 
     border-radius:5px; 
     color:white; 
@@ -43,7 +43,7 @@
   }
 
   button:hover {
-    background:#155ab6;
+    background:#838383;
   }
 
   /* Box trạng thái */
@@ -94,7 +94,7 @@
   a {
     display: block;
     margin-top: 12px;
-    color: #1a73e8;
+    color: #000000;
     font-size: 13px;
     text-decoration: none;
   }

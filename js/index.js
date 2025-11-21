@@ -1,7 +1,3 @@
-/* ============================================================
-   timesheet-app: index.js (phiên bản comment tiếng Việt)
-   - Mục tiêu: giữ nguyên logic gốc, chỉ tái cấu trúc & comment tiếng Việt
-   ============================================================ */
 
 /* ============================
    BIẾN TOÀN CỤC / THAM CHIẾU DOM
@@ -299,14 +295,14 @@ function generateTable() {
       const cW = row.insertCell(); // cột lương
 
       const cActions = row.insertCell();
-      cActions.style.display = "flex";
-      cActions.style.gap = "5px";
-      cActions.style.justifyContent = "center";
-      cActions.style.alignItems = "center";
+      // cActions.style.display = "flex";
+      // cActions.style.gap = "5px";
+      // cActions.style.justifyContent = "center";
+      // cActions.style.alignItems = "center";
 
-      // Nút "Xóa" giờ vào/ra
+      // Nút "icon Xóa" giờ vào/ra
       const btnReset = document.createElement("button");
-      btnReset.innerText = "Xóa";
+      btnReset.innerHTML = '<i class="fa-solid fa-trash"></i>';
       btnReset.className = "reset-btn";
       btnReset.style.padding = "2px 6px";
       btnReset.style.fontSize = "12px";
@@ -325,9 +321,9 @@ function generateTable() {
       };
       cActions.appendChild(btnReset);
 
-      // Nút "Thêm" sub-row
+      // Nút "icon Thêm " sub-row
       const btnAdd = document.createElement("button");
-      btnAdd.innerText = "Thêm";
+      btnAdd.innerHTML = '<i class="fa-solid fa-square-plus"></i>';
       btnAdd.className = "add-btn";
       btnAdd.style.padding = "2px 6px";
       btnAdd.style.fontSize = "12px";
@@ -609,7 +605,7 @@ function addSubRow(mainTr, existingData = null) {
 
   // Nút Xóa sub-row
   const btnDel = document.createElement("button");
-  btnDel.innerText = "Xóa";
+  btnDel.innerHTML = '<i class="fa-solid fa-trash"></i>';
   btnDel.className = "delete-btn";
   btnDel.style.padding = "2px 6px";
   btnDel.style.fontSize = "12px";
@@ -827,6 +823,20 @@ if (logoutBtn) {
     });
   });
 }
+// hiển thị popup thông báo   
+const notifBtn = document.getElementById("notifBtn");
+const notifPopup = document.getElementById("notifPopup");
+
+notifBtn.addEventListener("click", () => {
+  notifPopup.style.display = notifPopup.style.display === "block" ? "none" : "block";
+});
+
+// Click ngoài popup để đóng
+document.addEventListener("click", (e) => {
+  if (!notifBtn.contains(e.target) && !notifPopup.contains(e.target)) {
+    notifPopup.style.display = "none";
+  }
+});
 
 // Gắn sự kiện cho các nút apply/clear khi DOM đã sẵn sàng
 document.addEventListener("DOMContentLoaded", () => {

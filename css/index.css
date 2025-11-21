@@ -14,7 +14,7 @@ tr.sub-row td {
 tr.sub-row td input {
   font-size: 10px;
   padding: 2px 4px;
-  height: 24px;      /* hoặc auto nếu muốn tự động */
+  height: 24px;    
 }
 
 tr.sub-row td button {
@@ -33,7 +33,7 @@ tr.sub-row td button {
 
 /* === Tiêu đề trang === */
 h2 {
-  color: #1a73e8;                  /* Màu xanh nổi bật */
+  color: #414141;                  /* Màu xanh nổi bật */
   margin-top: 0;                   /* Loại bỏ khoảng cách trên */
   text-align: center;              /* Canh giữa chữ */
 }
@@ -72,7 +72,7 @@ h2 {
   height: 60px;
   border-radius: 50%;                /* Tròn */
   object-fit: cover;                 /* Cắt vừa khung */
-  border: 2px solid #4caf50;         /* Viền xanh */
+  border: 2px solid #000000;         /* Viền xanh */
 }
 
 /* Thông tin profile */
@@ -116,11 +116,11 @@ h2 {
   transition: 0.2s;
 }
 
-#editNameBtn { background-color: #27ae60; color: white; }
-#editNameBtn:hover { background-color: #45a049; }
+#editNameBtn { background-color: #222222; color: white; }
+#editNameBtn:hover { background-color: #999999; }
 
-#saveNameBtn { background-color: #2196f3; color: white; }
-#saveNameBtn:hover { background-color: #1976d2; }
+#saveNameBtn { background-color: #686868; color: white; }
+#saveNameBtn:hover { background-color: #a8a8a8; }
 
 /* Input & nút hiển thị inline, không lệch dòng */
 .profile-info input,
@@ -168,7 +168,7 @@ table {
 }
 
 th {
-  background: #1a73e8;
+  background: #747474;
   color: white;
   padding: 8px;
   font-size: 14px;
@@ -192,7 +192,7 @@ td {
 /* === Tổng lương === */
 .total-box {
   padding: 15px;
-  background: #1a73e8;
+  background: #868686;
   color: white;
   text-align: center;
   border-radius: 8px;
@@ -209,7 +209,7 @@ td {
   position: fixed;
   left: 10px;
   bottom: 10px;
-  background: #ffd862;
+  background: #a09797;
   padding: 10px 14px;
   border-radius: 10px;
   font-weight: bold;
@@ -221,7 +221,7 @@ td {
 
 /* --- Tô màu các dòng chính (ngày 1 → 31) --- */
 #timesheetBody > tr {
-  background-color: #a9cce4;
+  background-color: #d3d3d3;
 }
 
 /* --- Sub-row và sub-row-header giữ nguyên màu --- */
@@ -307,7 +307,7 @@ td {
 /* Style chung cho tất cả nút */
 /* ======================= */
 button {
-  background-color: #27ae60;
+  background-color: #313131;
   color: #fff;
   padding: 4px 10px;           /* Khoảng cách bên trong */
   font-size: 13px;             /* Cỡ chữ vừa */
@@ -323,27 +323,47 @@ button {
 button:hover {
   transform: translateY(-1px);
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  background-color: #818181;
 }
 
 /* Nút Reset / Xóa giờ (đỏ) */
-button.reset-btn, button.delete-btn {
-  background-color: #e74c3c; /* đỏ tươi */
-  color: #fff;
+/* Nút chỉ icon */
+button.add-btn,
+button.reset-btn,
+button.delete-btn {
+  background: transparent;  /* không nền */
+  border: none;             /* bỏ viền */
+  cursor: pointer;
+  font-size: 24px;          /* icon to hơn */
+  color: #000;              /* mặc định đen */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;             /* vừa đủ click */
+  transition: transform 0.2s, color 0.2s;
 }
 
-button.reset-btn:hover, button.delete-btn:hover {
-  background-color: #c0392b;
-}
-
-/* Nút Thêm / Thêm sub-row (xanh lá) */
-button.add-btn {
-  background-color: #27ae60; /* xanh lá */
-  color: #fff;
-}
-
+/* Hover hiệu ứng màu */
 button.add-btn:hover {
-  background-color: #1e8449;
+  color: #27ae60;          
+  transform: scale(1.2);    /* to lên nhẹ */
 }
+
+button.reset-btn:hover {
+  color: #e74c3c;           /* đỏ khi hover */
+  transform: scale(1.2);
+}
+
+button.delete-btn:hover {
+  color: #d35400;           /* cam khi hover */
+  transform: scale(1.2);
+}
+
+/* Nếu icon nằm trong <i> */
+button i {
+  pointer-events: none;     /* click vẫn tính cho button */
+}
+
 
 /* Nút Ẩn / Save / Lưu (xanh dương) */
 button.hide-btn, button.save-btn {
@@ -357,7 +377,7 @@ button.hide-btn:hover, button.save-btn:hover {
 
 /* Nút applyFixed (áp dụng toàn bộ) */
 button.apply-btn {
-  background-color: #27ae60; 
+  background-color: #303030; 
   color: #fff;
 }
 
@@ -374,11 +394,11 @@ button.apply-btn:hover {
   border-radius: 5px;
 }
 button#changeAvatarBtn {
-  background-color: #8e44ad; /* tím */
+  background-color: #727272; /* tím */
   color: #fff;
 }
 button#changeAvatarBtn:hover {
-  background-color: #6c3483;
+  background-color: #c0c0c0;
 }
 
 /* ---------- Các input cố định trên đầu ---------- */
@@ -568,16 +588,98 @@ display: flex;
 
 /* Logout luôn dưới cùng và sang phải */
 #logoutBtn {
-  margin-top: auto;      /* đẩy xuống đáy */
-  align-self: flex-end;  /* sang phải */
-  text-decoration: none;
-  padding: 10px 15px;
-  border-radius: 8px;
-  background-color: #ebb6b6;
-  color: #000;
-  transition: background 0.3s;
+  margin-top: auto; /* đẩy xuống dưới cùng */
+  text-align: right; /* căn sang phải */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding-right: 20px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+#logoutBtn i,
+#logoutBtn span {
+  transition: 0.25s;
 }
 
-#logoutBtn:hover {
-  background-color: #c9302c;
+/* Hover — chỉ sáng icon + chữ */
+#logoutBtn:hover i,
+#logoutBtn:hover span {
+  color: #ff4d4d; 
+}
+/* tiêu đề trang chính */
+.home_title_index {
+  text-align: center;   
+  font-size: 28px;      
+  font-weight: 600;   
+  margin: 15px 0 25px; 
+}
+.home_title_index i {
+  margin-right: 6px;    
+  font-size: 26px;      
+}
+
+/* Wrapper để định vị nút thông báo */
+.notif-wrapper {
+  position: relative;
+  width: 100%;
+  text-align: right; /* icon nằm bên phải */
+  padding: 10px;
+}
+
+/* Nút thông báo */
+.notif-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 24px;  /* icon to */
+  color: #000;
+  padding: 6px;
+  border-radius: 8px;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.notif-btn:hover {
+  color: #ebebeb;   /* đổi màu khi hover */
+  transform: scale(1.1);
+}
+
+/* Popup thông báo */
+.notif-popup {
+  display: none;              /* mặc định ẩn */
+  position: absolute;
+  top: 40px;                  /* cách nút 40px */
+  right: 0;                   /* canh phải */
+  width: 220px;               /* rộng popup */
+  padding: 12px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  font-size: 14px;
+  color: #333;
+  z-index: 999;
+  text-align: left;
+}
+/* Container cuối navbar, căn giữa */
+.contact-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 16px;            /* khoảng cách giữa các icon */
+  padding: 12px 0;
+}
+
+/* Icon liên hệ */
+.contact-icon {
+  font-size: 15px;       /* icon to vừa nhìn rõ */
+  color: #000;           /* mặc định đen */
+  text-decoration: none;
+  transition: transform 0.2s, color 0.2s;
+}
+
+/* Hover icon */
+.contact-icon:hover {
+  color: #8d8d8d;        /* màu nổi bật khi hover */
+  transform: scale(1.2);
 }

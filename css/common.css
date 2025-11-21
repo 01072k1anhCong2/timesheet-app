@@ -13,51 +13,14 @@ body {
   background: #f0f2f5;
 }
 .card-ltc {
-  width: 280px;
-  padding: 16px 20px;
-  border-radius: 16px;
-  color: #fff;
-  font-size: 16px;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  text-align: center;
-  margin: 0 auto;  /* Canh giữa ngang */
-
-
-  /* nền chuyển động màu */
-  background: linear-gradient(
-    135deg,
-    #ff7a7a,
-    #ffb86c,
-    #f9f871,
-    #8be9fd,
-    #bd93f9,
-    #ff79c6
-  );
-  background-size: 400% 400%;
-  animation: ltcColor 12s ease infinite, ltcFloat 3s ease-in-out infinite;
-
-  /* viền sáng */
-  border: 1px solid rgba(255, 255, 255, 0.2);
-
-  /* glow mờ */
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-
-  position: relative;
-  overflow: hidden;
+  text-align: center;     
+  font-size: 12px;            
+  margin-top: 8px;              
+  line-height: 1.3;   
+  font-weight: 400;            
+  opacity: 0.7;                 
 }
 
-/* glow chạy theo màu */
-.card-ltc::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: inherit;
-  filter: blur(25px);
-  border-radius: inherit;
-  z-index: -1;
-  opacity: 0.35;
-}
 
 /* CHUYỂN MÀU */
 @keyframes ltcColor {
@@ -169,6 +132,11 @@ body {
 #langBtn:hover {
   background-color: #f0f0f0;
   transform: translateY(-2px);
+}
+#langBtn i {
+  font-size: 20px;
+  vertical-align: middle;
+  transition: transform 0.2s; 
 }
 
 /* Dropdown list */

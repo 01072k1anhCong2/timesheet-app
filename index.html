@@ -24,11 +24,11 @@
 <body>
   <!-- Thanh chọn ngôn ngữ -->
   <div class="lang-container">
-    <button id="langBtn">🌐 Tiếng Việt</button>
+    <button id="langBtn"><i class="fa-solid fa-earth-asia"></i></button>
     <ul id="langList" class="lang-list">
-      <li data-lang="vn">🇻🇳 Tiếng Việt</li>
-      <li data-lang="jp">🇯🇵 日本語</li>
-      <li data-lang="en">🇬🇧 English</li>
+      <li data-lang="vn">🇻🇳 </li>
+      <li data-lang="jp">🇯🇵 </li>
+      <li data-lang="en">🇬🇧 </li>
     </ul>
   </div>
   <!-- Nút Hamburger toggle sidebar -->
@@ -36,11 +36,21 @@
 
   <!-- Sidebar -->
   <nav id="sidebar" class="sidebar">
+    <!-- Nút thông báo -->
+    <div class="notif-wrapper">   
+    <button id="notifBtn" class="notif-btn">
+      <i class="fa-solid fa-bell"></i>
+    </button>
+    <div id="notifPopup" class="notif-popup">
+      đang hoàn thành rồi mọi người ơi 
+      mọi người có góp ý gì thì inbox mình nha ^^ fb :Lâm Thành Công
+    </div>
+    </div>
     <!-- Profile Card -->
     <div class="profile-card">
       <img src="./images/avt.png" alt="Avatar" class="avatar" id="avatarImg">
       <div class="profile-info">
-        <span class="name">Người dùng</span>
+        <span class="name"  data-lang="name">Người dùng</span>
         <input type="text" id="nameInput" placeholder="Nhập tên mới" style="display:none;">
       </div>
       <div class="profile-actions">
@@ -53,11 +63,19 @@
 
     <!-- Sidebar Placeholder Items -->
     <ul>
-      <li class="placeholder">📁 Mục 1 (dự tính)</li>
-      <li class="placeholder">📁 Mục 2 (dự tính)</li>
-      <li class="placeholder">📁 Mục 3 (dự tính)</li>
-      <li><a href="#" id="logoutBtn">🚪Đăng xuất</a></li>
+      <li class="placeholder"><i class="fa-regular fa-folder-open"></i> Mục 1 (dự tính)</li>
+      <li class="placeholder"><i class="fa-regular fa-folder-open"></i> Mục 2 (dự tính)</li>
+      <li class="placeholder"><i class="fa-regular fa-folder-open"></i> Mục 3 (dự tính)</li>
+      <li><a href="#" id="logoutBtn" data-lang="logout"><i class="fa-solid fa-right-from-bracket"></i><span>Đăng xuất</span></a></li>
     </ul>
+    <div class="contact-wrapper">
+      <a href="https://www.instagram.com/nguoilamdinhtoi/" target="_blank" class="contact-icon">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://www.facebook.com/lamthanh.congchu" target="_blank" class="contact-icon">
+        <i class="fa-brands fa-facebook"></i>
+      </a>
+    </div>    
   </nav>
 
   <!-- Floating total khi cuộn -->
@@ -71,9 +89,12 @@
     <!-- Card giới thiệu -->
     <div class="card-ltc" data-lang="card_ltc">
       Tính lương tay by dev <br> LÂM THÀNH CÔNG phát triển
+      <i class="fa-regular fa-copyright"></i>
     </div>
 
-    <h2 data-lang="home_title_index">📋 Quản lý công & lương</h2>
+    <h2 data-lang="home_title_index" class="home_title_index">
+      <i class="fa-solid fa-calendar-days"></i> Quản lý công & lương
+    </h2>
 
     <!-- Profile nhỏ bên main content -->
     <div class="profile-card">
@@ -86,12 +107,14 @@
     <!-- Controls -->
     <div class="controls">
       <!-- Chọn tháng -->
-      <label>📅 Chọn tháng:
+      <label>
+        <i class="fa-regular fa-calendar-days"></i> <span data-lang="monthSelect">Chọn tháng:</span>
         <select id="monthSelect"></select>
       </label>
 
       <!-- Tiền lương/giờ -->
-      <label>💴 Tiền lương/giờ:
+      <label>
+        <i class="fa-solid fa-hand-holding-dollar"></i> Tiền lương/giờ:
         <input type="number" id="rate" value="1100">
       </label>
 
@@ -100,27 +123,27 @@
         <label>Giờ vào:
           <input type="time" id="fixedIn">
           <button id="applyInBtn">Cố Định</button>
-          <button id="clearInBtn" class="reset-btn">Xóa</button>
+          <button id="clearInBtn" class="reset-btn"><i class="fa-solid fa-trash"></i></button>
         </label>
         <label>Giờ ra:
           <input type="time" id="fixedOut">
           <button id="applyOutBtn">Cố Định</button>
-          <button id="clearOutBtn" class="reset-btn">Xóa</button>
+          <button id="clearOutBtn" class="reset-btn"><i class="fa-solid fa-trash"></i></button>
         </label>
         <label>Giờ giải lao:
           <input type="number" id="fixedBreak" placeholder="Phút">
           <button id="applyBreakBtn">Cố Định</button>
-          <button id="clearBreakBtn" class="reset-btn">Xóa</button>
+          <button id="clearBreakBtn" class="reset-btn"><i class="fa-solid fa-trash"></i></button>
         </label>
         <label>Tiền đi:
           <input type="number" id="fixedGo" placeholder="¥">
           <button id="applyGoBtn">Cố Định</button>
-          <button id="clearGoBtn" class="reset-btn">Xóa</button>
+          <button id="clearGoBtn" class="reset-btn"><i class="fa-solid fa-trash"></i></button>
         </label>
         <label>Tiền về:
           <input type="number" id="fixedBack" placeholder="¥">
           <button id="applyBackBtn">Cố Định</button>
-          <button id="clearBackBtn" class="reset-btn">Xóa</button>
+          <button id="clearBackBtn" class="reset-btn"><i class="fa-solid fa-trash"></i></button>
         </label>
       </div>
     </div>
@@ -164,7 +187,9 @@
   <div id="toast" class="toast"></div>
 
   <!-- Nút cuộn lên đầu trang -->
-  <button id="scrollTopBtn" title="Lên đầu trang"><i class="fas fa-arrow-up"></i></button>
+  <button id="scrollTopBtn" title="Lên đầu trang">
+    <i class="fas fa-arrow-up"></i>
+  </button>
 
   <!-- JS chính -->
   <script src="./js/index.js"></script>

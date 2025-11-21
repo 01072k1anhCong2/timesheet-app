@@ -1,14 +1,12 @@
-import { LANG_VN as LOGIN_VN, LANG_JP as LOGIN_JP, LANG_EN as LOGIN_EN } from './lang-login.js';
-import { LANG_VN as REGISTER_VN, LANG_JP as REGISTER_JP, LANG_EN as REGISTER_EN } from './lang-register.js';
-import { LANG_VN as INDEX_VN, LANG_JP as INDEX_JP, LANG_EN as INDEX_EN } from './lang-index.js';
+import { LANG_JP as LOGIN_JP, LANG_EN as LOGIN_EN } from './lang-login.js';
+import { LANG_JP as REGISTER_JP, LANG_EN as REGISTER_EN } from './lang-register.js';
+import { LANG_JP as INDEX_JP, LANG_EN as INDEX_EN } from './lang-index.js';
 
 // Biến lưu ngôn ngữ hiện tại
-export let currentLang = LOGIN_VN;
+let currentLang = {};
 // Kết hợp các ngôn ngữ
-export const LANG_VN = { ...LOGIN_VN, ...REGISTER_VN, ...INDEX_VN };
-export const LANG_JP = { ...LOGIN_JP, ...REGISTER_JP, ...INDEX_JP };
+export const LANG_JP = { ...LOGIN_JP, ...REGISTER_JP, ...INDEX_JP }; 
 export const LANG_EN = { ...LOGIN_EN, ...REGISTER_EN, ...INDEX_EN };
-
 
 // Khi chọn ngôn ngữ
 const langBtn = document.getElementById("langBtn");
@@ -23,7 +21,10 @@ langBtn.addEventListener("click", () => {
 langList.querySelectorAll("li").forEach(li => {
   li.addEventListener("click", () => {
     const lang = li.getAttribute("data-lang"); // Lấy code ngôn ngữ
-    if(lang === "vn") currentLang = LANG_VN;
+    if(lang === "vn"){
+      location.reload(); // Tải lại trang để về ngôn ngữ mặc định (Tiếng Việt)
+      return;
+    }
     else if(lang === "jp") currentLang = LANG_JP;
     else if(lang === "en") currentLang = LANG_EN;
 
