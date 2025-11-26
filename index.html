@@ -80,7 +80,7 @@
 
   <!-- Floating total khi cuộn -->
   <div id="floatingTotal">
-    Tổng: <span id="floatingTotalValue">0</span> ¥
+    <span data-lang="total">Tổng:</span> <span id="floatingTotalValue">0</span> ¥
   </div>
 
   <!-- Main Content -->
@@ -114,35 +114,35 @@
 
       <!-- Tiền lương/giờ -->
       <label>
-        <i class="fa-solid fa-hand-holding-dollar"></i> Tiền lương/giờ:
+        <i class="fa-solid fa-hand-holding-dollar"></i> <span data-lang="salary_per_hour">Tiền lương/giờ:</span>
         <input type="number" id="rate" value="1100">
       </label>
 
       <!-- Fixed Inputs cho sub-row -->
       <div class="fixed-inputs">
-        <label>Giờ vào:
+        <label><span data-lang="time_in_label">Giờ vào:</span>
           <input type="time" id="fixedIn">
-          <button id="applyInBtn">Cố Định</button>
+          <button id="applyInBtn" data-lang="apply_btn">Cố Định</button>
           <button id="clearInBtn" class="reset-btn"><i class="fa-solid fa-trash"></i></button>
         </label>
-        <label>Giờ ra:
+        <label><span data-lang="time_out_label">Giờ ra:</span>
           <input type="time" id="fixedOut">
-          <button id="applyOutBtn">Cố Định</button>
+          <button id="applyOutBtn" data-lang="apply_btn">Cố Định</button>
           <button id="clearOutBtn" class="reset-btn"><i class="fa-solid fa-trash"></i></button>
         </label>
-        <label>Giờ giải lao:
+        <label><span data-lang="break_label">giờ giải lao:</span>
           <input type="number" id="fixedBreak" placeholder="Phút">
-          <button id="applyBreakBtn">Cố Định</button>
+          <button id="applyBreakBtn" data-lang="apply_btn">Cố Định</button>
           <button id="clearBreakBtn" class="reset-btn"><i class="fa-solid fa-trash"></i></button>
         </label>
-        <label>Tiền đi:
+        <label><span data-lang="go_money_label">Tiền đi:</span>
           <input type="number" id="fixedGo" placeholder="¥">
-          <button id="applyGoBtn">Cố Định</button>
+          <button id="applyGoBtn" data-lang="apply_btn">Cố Định</button>
           <button id="clearGoBtn" class="reset-btn"><i class="fa-solid fa-trash"></i></button>
         </label>
-        <label>Tiền về:
+        <label><span data-lang="back_money_label">Tiền về:</span>
           <input type="number" id="fixedBack" placeholder="¥">
-          <button id="applyBackBtn">Cố Định</button>
+          <button id="applyBackBtn" data-lang="apply_btn">Cố Định</button>
           <button id="clearBackBtn" class="reset-btn"><i class="fa-solid fa-trash"></i></button>
         </label>
       </div>
@@ -153,12 +153,12 @@
       <table id="timesheet">
         <thead>
           <tr>
-            <th>Ngày</th>
-            <th>Giờ vào</th>
-            <th>Giờ ra</th>
-            <th>Số giờ</th>
-            <th>Lương</th>
-            <th>Hành động</th>
+           <th data-lang="col_day">Ngày</th>
+           <th data-lang="col_time_in">Giờ vào</th>
+           <th data-lang="col_time_out">Giờ ra</th>
+           <th data-lang="col_hours">Số giờ</th>
+           <th data-lang="col_salary">Lương</th>
+           <th data-lang="col_actions">Hành động</th>
           </tr>
         </thead>
         <tbody id="timesheetBody"></tbody>
@@ -167,7 +167,7 @@
 
     <!-- Total box -->
     <div class="total-box">
-      <h3>TỔNG LƯƠNG THÁNG <span id="currentMonth"></span></h3>
+      <h3 data-lang="total_salary_month">TỔNG LƯƠNG THÁNG <span id="currentMonth"></span></h3>
       <div class="total-amount"><span id="total">0</span> 円</div>
     </div>
   </div>

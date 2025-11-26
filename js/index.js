@@ -229,6 +229,8 @@ firebase.auth().onAuthStateChanged(user => {
 for (let m = 1; m <= 12; m++) {
   let o = document.createElement("option");
   o.value = m;
+    // Thêm data-lang để dịch
+  o.setAttribute("data-lang", "month_" + m);
   o.innerText = "Tháng " + m;
   monthSelect.appendChild(o);
 }
