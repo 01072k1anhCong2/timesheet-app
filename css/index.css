@@ -703,3 +703,7 @@ display: flex;
   color: #8d8d8d;        /* màu nổi bật khi hover */
   transform: scale(1.2);
 }
+/* đổi màu option */
+#monthSelect option {
+  color: rgb(0, 0, 0);
+}
